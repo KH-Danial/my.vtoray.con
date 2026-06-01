@@ -14,12 +14,7 @@
             padding: 40px 20px;
         }
         .container { max-width: 1100px; margin: auto; }
-        
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+        .header { text-align: center; margin-bottom: 50px; }
         .header .icon { font-size: 70px; margin-bottom: 15px; }
         .header h1 {
             font-size: 2.8em;
@@ -39,15 +34,7 @@
             font-size: 0.9em;
             margin: 8px;
         }
-
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        /* Card */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
@@ -58,39 +45,10 @@
             position: relative;
             overflow: hidden;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,198,255,0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .card:hover::before { opacity: 1; }
-
-        .card-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-            display: block;
-        }
-        .card h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-        .card p {
-            color: #b0b0b0;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .card-icon { font-size: 45px; margin-bottom: 15px; display: block; }
+        .card h3 { font-size: 1.5em; margin-bottom: 10px; color: #fff; }
+        .card p { color: #b0b0b0; line-height: 1.7; margin-bottom: 20px; font-size: 0.95em; }
         .btn {
             display: inline-block;
             background: linear-gradient(90deg, #00c6ff, #0072ff);
@@ -102,21 +60,9 @@
             font-size: 0.95em;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #666;
-            font-size: 0.9em;
-        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,114,255,0.4); }
+        .footer { text-align: center; margin-top: 60px; color: #666; font-size: 0.9em; }
         .footer a { color: #00c6ff; text-decoration: none; }
-
-        /* Responsive */
         @media (max-width: 600px) {
             .header h1 { font-size: 2em; }
             .grid { grid-template-columns: 1fr; }
@@ -125,7 +71,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="icon">🌐</div>
             <h1>فایل‌های کانفیگ V2Ray</h1>
@@ -137,71 +82,62 @@
             </div>
         </div>
 
-        <!-- Cards Grid -->
         <div class="grid">
             <!-- Vmess -->
             <div class="card">
                 <span class="card-icon">📨</span>
                 <h3>Vmess</h3>
-                <p>پروتکل اصلی V2Ray با قابلیت رمزنگاری پیشرفته و دور زدن محدودیت‌ها. مناسب برای استفاده عمومی.</p>
-                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/refs/heads/main/vmess.txt" class="btn" download>📥 دانلود کانفیگ Vmess</a>
+                <p>پروتکل اصلی V2Ray با رمزنگاری پیشرفته. مناسب برای استفاده عمومی.</p>
+                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/main/vmess.txt" class="btn" download>📥 دانلود Vmess</a>
             </div>
-
             <!-- Vless -->
             <div class="card">
                 <span class="card-icon">📨</span>
                 <h3>Vless</h3>
-                <p>نسخهٔ سبک‌تر Vmess بدون رمزنگاری اضافه. مناسب برای ترکیب با Reality و XTLS.</p>
-                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/refs/heads/main/vless.txt" class="btn" download>📥 دانلود کانفیگ Vless</a>
+                <p>نسخهٔ سبک Vmess بدون رمزنگاری اضافه. مناسب برای Reality و XTLS.</p>
+                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/main/vless.txt" class="btn" download>📥 دانلود Vless</a>
             </div>
-
             <!-- Reality -->
             <div class="card">
                 <span class="card-icon">🟣</span>
                 <h3>Reality</h3>
-                <p>پروتکل جدید با قابلیت استتار ترافیک. بهترین گزینه برای شبکه‌های با فیلترینگ پیشرفته.</p>
-                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/refs/heads/main/reality.txt" class="btn" download>📥 دانلود کانفیگ Reality</a>
+                <p>پروتکل استتار ترافیک. بهترین گزینه برای فیلترینگ پیشرفته.</p>
+                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/main/reality.txt" class="btn" download>📥 دانلود Reality</a>
             </div>
-
             <!-- Trojan -->
             <div class="card">
                 <span class="card-icon">🐎</span>
                 <h3>Trojan</h3>
-                <p>پروتکل مبتنی بر TLS که ترافیک را شبیه HTTPS معمولی می‌کند. شناسایی آن بسیار دشوار است.</p>
-                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/refs/heads/main/trojan.txt" class="btn" download>📥 دانلود کانفیگ Trojan</a>
+                <p>ترافیک شبیه HTTPS معمولی. شناسایی بسیار دشوار.</p>
+                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/main/trojan.txt" class="btn" download>📥 دانلود Trojan</a>
             </div>
-
             <!-- Shadowsocks -->
             <div class="card">
                 <span class="card-icon">🕶️</span>
                 <h3>Shadowsocks</h3>
-                <p>پروتکل پراکسی سریع و ساده با رمزنگاری AES. مصرف کم منابع و سرعت بالا.</p>
-                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/refs/heads/main/ss.txt" class="btn" download>📥 دانلود کانفیگ Shadowsocks</a>
+                <p>پروتکل پراکسی سریع و ساده با رمزنگاری AES.</p>
+                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/main/ss.txt" class="btn" download>📥 دانلود Shadowsocks</a>
             </div>
-
             <!-- Hysteria2 -->
             <div class="card">
                 <span class="card-icon">⚡</span>
                 <h3>Hysteria2</h3>
-                <p>پروتکل فوق‌العاده سریع بر پایه QUIC. مناسب برای ترافیک سنگین و گیمینگ.</p>
-                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/refs/heads/main/hysteria2.txt" class="btn" download>📥 دانلود کانفیگ Hysteria2</a>
+                <p>پروتکل فوق‌سریع بر پایه QUIC. مناسب برای ترافیک سنگین و گیمینگ.</p>
+                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/main/hysteria2.txt" class="btn" download>📥 دانلود Hysteria2</a>
             </div>
-
             <!-- Wireguard -->
             <div class="card">
                 <span class="card-icon">🧅</span>
                 <h3>Wireguard</h3>
-                <p>پروتکل VPN مدرن با رمزنگاری بسیار قوی و مصرف باتری کم. مناسب برای موبایل.</p>
-                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/refs/heads/main/wireguard.txt" class="btn" download>📥 دانلود کانفیگ Wireguard</a>
+                <p>پروتکل VPN مدرن با رمزنگاری قوی و مصرف باتری کم.</p>
+                <a href="https://github.com/KH-Danial/my.vtoray.con/raw/main/wireguard.txt" class="btn" download>📥 دانلود Wireguard</a>
             </div>
         </div>
 
-        <!-- Footer -->
         <div class="footer">
             <p>
-                📂 مخزن پروژه: 
-                <a href="https://github.com/KH-Danial/my.vtoray.con" target="_blank">github.com/KH-Danial/my.vtoray.con</a>
-                | 🕒 آخرین به‌روزرسانی خودکار توسط GitHub Actions
+                📂 مخزن: <a href="https://github.com/KH-Danial/my.vtoray.con" target="_blank">github.com/KH-Danial/my.vtoray.con</a>
+                | 🕒 به‌روزرسانی خودکار هر ۳ ساعت
             </p>
         </div>
     </div>
