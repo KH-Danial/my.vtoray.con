@@ -2,9 +2,8 @@ name: Update V2Ray Configs
 
 on:
   schedule:
-    # هر 6 ساعت یکبار اجرا شود (زمان دلخواه)
     - cron: '0 */6 * * *'
-  workflow_dispatch:  # امکان اجرای دستی از تب Actions
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,19 +18,18 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies (if any)
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # در صورت نیاز به کتابخانه‌ی خاصی مانند requests، خط زیر را فعال کنید
-        # pip install requests
+        pip install requests
 
-    - name: Fetch configs (fetch_configs.py)
+    - name: Fetch configs
       run: python fetch_configs.py
 
-    - name: Remove duplicates (delete_duplicate_name.py)
+    - name: Remove duplicates
       run: python delete_duplicate_name.py
 
-    - name: Organize configs by protocol (organize_configs.py)
+    - name: Organize configs by protocol
       run: python organize_configs.py
 
     - name: Commit and push changes
@@ -39,6 +37,5 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git add .
-        # اگر تغییری وجود داشت commit کن
         git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update configs: fetch, deduplicate, organize [skip ci]"
         git push
