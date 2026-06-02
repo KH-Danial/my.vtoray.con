@@ -132,17 +132,19 @@
 
         .protocols-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 1.5rem;
         }
 
+        /* اصلاح مشکل مخفی شدن زیرمنوها */
         .protocol-card {
             background: var(--card-bg);
             backdrop-filter: blur(8px);
             border: 1px solid var(--card-border);
             border-radius: 1.2rem;
-            overflow: hidden;
+            overflow: visible; /* کلید حل مشکل بریدگی */
             box-shadow: var(--shadow);
+            transition: all 0.2s;
         }
 
         .protocol-header {
@@ -154,6 +156,8 @@
             gap: 0.8rem;
             cursor: pointer;
             border-bottom: 1px solid var(--border-light);
+            background: inherit;
+            border-radius: 1.2rem 1.2rem 0 0;
         }
 
         .protocol-name {
@@ -180,9 +184,13 @@
         .protocol-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.35s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .protocol-card.open .protocol-body { max-height: 800px; }
+
+        .protocol-card.open .protocol-body {
+            max-height: 2000px; /* ارتفاع کافی برای تمام فایل‌ها */
+            overflow-y: auto;  /* اسکرول در صورت نیاز */
+        }
 
         .file-list {
             padding: 0.8rem 1rem 1rem;
@@ -264,6 +272,8 @@
             padding: 1rem;
             border: 1px solid var(--card-border);
             margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         footer {
@@ -305,7 +315,7 @@
         <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> تم شب</button>
     </div>
 
-    <div class="stats-grid" id="statsPanel">
+    <div class="stats-grid">
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value" id="totalConfigs">-</div><div class="stat-label">مجموع کانفیگ‌ها</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-code-branch"></i></div><div class="stat-value" id="totalFiles">-</div><div class="stat-label">فایل‌های پیکربندی</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-database"></i></div><div class="stat-value" id="totalSize">-</div><div class="stat-label">حجم کل (MB)</div></div>
@@ -317,7 +327,9 @@
         <div id="protocolsGrid" class="protocols-grid"><div class="loading"><i class="fas fa-spinner fa-pulse"></i> بارگذاری...</div></div>
     </div>
 
-    <div class="chart-container"><canvas id="healthChart"></canvas></div>
+    <div class="chart-container">
+        <canvas id="healthChart"></canvas>
+    </div>
     <footer><i class="fas fa-sync-alt"></i> به‌روزرسانی خودکار با GitHub Actions | وضعیت آنلاین فایل‌ها بررسی می‌شود.</footer>
 </div>
 
@@ -343,8 +355,7 @@
 
     function formatBytes(bytes) {
         if (bytes === 0) return '0 B';
-        const mb = bytes / (1024 * 1024);
-        return mb.toFixed(2) + ' MB';
+        return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
     }
 
     function formatDate(isoString) {
@@ -374,17 +385,15 @@
                 fetch('config/metadata.json?t=' + Date.now()),
                 fetch('stats.json?t=' + Date.now())
             ]);
-            if (!metadataRes.ok || !statsRes.ok) throw new Error('خطا در دریافت فایل‌های داده');
-            
+            if (!metadataRes.ok || !statsRes.ok) throw new Error('خطا در دریافت داده');
             const metadata = await metadataRes.json();
             const stats = await statsRes.json();
 
-            // ********** بخش آمارگیری از کد شماره 1 (که درست کار می‌کند) **********
+            // آمار کلی
             const totalConfigs = stats.summary?.total_configs || 
                                  Object.values(stats).reduce((acc, p) => acc + (p.raw_count || 0), 0);
             const totalFiles = Object.values(metadata.protocols).reduce((acc, p) => acc + (p.files?.length || 0), 0);
             const totalSizeBytes = Object.values(metadata.protocols).reduce((acc, p) => acc + (p.total_size_bytes || 0), 0);
-            // *******************************************************************
 
             document.getElementById('totalConfigs').innerText = totalConfigs.toLocaleString();
             document.getElementById('totalFiles').innerText = totalFiles;
@@ -401,7 +410,9 @@
             for (const [proto, data] of protocols) {
                 const files = data.files || [];
                 const totalConfigsProto = data.total_configs || files.reduce((s,f)=> s + (f.config_count || 0), 0);
-                const health = stats[proto]?.health_sample?.percent || 0;
+                let health = stats[proto]?.health_sample?.percent || 0;
+                // گرد کردن به یک رقم اعشار
+                health = parseFloat(health).toFixed(1);
                 const healthColor = health >= 60 ? '#10b981' : (health >= 30 ? '#f59e0b' : '#ef4444');
 
                 let filesHtml = '';
@@ -432,7 +443,9 @@
                             <div class="protocol-stats">
                                 <span><i class="fas fa-database"></i> ${totalConfigsProto.toLocaleString()}</span>
                                 <span><i class="fas fa-file"></i> ${files.length}</span>
-                                <span style="color:${healthColor}"><i class="fas fa-heartbeat"></i> ${health}%</span>
+                                <span style="color:${healthColor}; background:rgba(0,0,0,0.15); padding:0.2rem 0.5rem; border-radius:1rem;">
+                                    <i class="fas fa-heartbeat"></i> ${health}%
+                                </span>
                             </div>
                         </div>
                         <div class="protocol-body"><div class="file-list">${filesHtml || '<div class="file-item">فاقد فایل</div>'}</div></div>
@@ -441,7 +454,7 @@
             }
             grid.innerHTML = html;
 
-            // بررسی وضعیت آنلاین
+            // بررسی وضعیت آنلاین فایل‌ها
             const fileItems = document.querySelectorAll('.file-item');
             for (const item of fileItems) {
                 const url = item.getAttribute('data-file-url');
@@ -452,28 +465,51 @@
                 statusSpan.innerHTML = isOnline ? '<i class="fas fa-check-circle online"></i> قابل دسترس' : '<i class="fas fa-times-circle offline"></i> غیرقابل دسترس';
             }
 
-            // نمودار سلامت
+            // رسم نمودار سلامت با یک رقم اعشار در tooltip
             const ctx = document.getElementById('healthChart').getContext('2d');
-            const labels = [], healthData = [];
+            const labels = [];
+            const healthData = [];
             for (const [proto, val] of Object.entries(stats)) {
                 if (val.health_sample && proto !== 'summary') {
                     labels.push(proto.toUpperCase());
-                    healthData.push(val.health_sample.percent);
+                    healthData.push(parseFloat(val.health_sample.percent).toFixed(1));
                 }
             }
             if (healthChart) healthChart.destroy();
             healthChart = new Chart(ctx, {
                 type: 'bar',
-                data: { labels, datasets: [{ label: 'نرخ سلامت کانفیگ‌ها (%)', data: healthData, backgroundColor: 'rgba(79, 70, 229, 0.7)', borderRadius: 8 }] },
-                options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } } }, scales: { y: { beginAtZero: true, max: 100 } } }
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'نرخ سلامت کانفیگ‌ها (%)',
+                        data: healthData,
+                        backgroundColor: 'rgba(79, 70, 229, 0.7)',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => `${context.raw}% کانفیگ فعال`
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'درصد سلامت', color: '#94a3b8' }, ticks: { callback: (val) => val + '%' } }
+                    }
+                }
             });
         } catch (err) {
+            console.error(err);
             grid.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> خطا: ${err.message}</div>`;
         }
     }
 
     new MutationObserver(() => { if (healthChart) healthChart.update(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
     loadDashboard();
 </script>
 </body>
