@@ -4,370 +4,308 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>V2Ray Config Hub | داشبورد مدیریت کانفیگ</title>
-    <!-- Font Awesome Icons (v6) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Chart.js for beautiful charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, sans-serif;
         }
 
-        /* Light Mode Variables (Default) */
         :root {
-            --bg-gradient-start: #f8fafc;
-            --bg-gradient-end: #e2e8f0;
+            --bg-start: #f8fafc;
+            --bg-end: #e2e8f0;
             --card-bg: rgba(255, 255, 255, 0.75);
             --card-border: rgba(255, 255, 255, 0.5);
             --text-primary: #0f172a;
             --text-secondary: #334155;
             --text-muted: #64748b;
-            --shadow-color: rgba(0, 0, 0, 0.05);
-            --accent-primary: #4f46e5;
-            --accent-success: #10b981;
-            --accent-warning: #f59e0b;
-            --accent-danger: #ef4444;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            --accent: #4f46e5;
+            --success: #10b981;
+            --danger: #ef4444;
             --header-blur: rgba(255, 255, 255, 0.85);
             --border-light: rgba(0, 0, 0, 0.08);
         }
 
-        /* Dark Mode Variables */
         body.dark {
-            --bg-gradient-start: #0f172a;
-            --bg-gradient-end: #020617;
+            --bg-start: #0f172a;
+            --bg-end: #020617;
             --card-bg: rgba(30, 41, 59, 0.75);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
-            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             --header-blur: rgba(15, 23, 42, 0.85);
             --border-light: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
             min-height: 100vh;
-            padding: 2rem 1.5rem;
-            transition: background 0.3s ease, color 0.2s ease;
+            padding: 2rem 1rem;
+            transition: all 0.3s ease;
             color: var(--text-primary);
         }
 
-        /* Glassmorphism Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            backdrop-filter: blur(2px);
+            width: 100%;
         }
 
-        /* Header Styles */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            gap: 1rem;
+            margin-bottom: 2rem;
             padding: 1rem 1.5rem;
             background: var(--header-blur);
             backdrop-filter: blur(12px);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             border: 1px solid var(--card-border);
-            box-shadow: 0 8px 20px var(--shadow-color);
+            box-shadow: var(--shadow);
         }
 
         .title-section h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-primary), #a855f7);
-            -webkit-background-clip: text;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
             background-clip: text;
+            -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.02em;
         }
 
         .title-section p {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
         }
 
         .theme-toggle {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 3rem;
-            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
             cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s ease;
+            font-weight: 500;
             color: var(--text-primary);
-            backdrop-filter: blur(4px);
         }
 
-        .theme-toggle i {
-            margin-left: 0.5rem;
-        }
-
-        /* Stats Cards Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
         }
 
         .stat-card {
             background: var(--card-bg);
             backdrop-filter: blur(8px);
             border: 1px solid var(--card-border);
-            border-radius: 1.5rem;
-            padding: 1.2rem 1.5rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 12px var(--shadow-color);
+            border-radius: 1.2rem;
+            padding: 1rem 1.2rem;
+            transition: transform 0.2s;
+            box-shadow: var(--shadow);
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px var(--shadow-color);
-        }
+        .stat-card:hover { transform: translateY(-3px); }
+        .stat-icon { font-size: 1.8rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .stat-value { font-size: 1.8rem; font-weight: 800; line-height: 1.2; }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); }
 
-        .stat-icon {
-            font-size: 2rem;
-            color: var(--accent-primary);
-            margin-bottom: 0.75rem;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        /* Protocols Section */
-        .protocols-section {
-            margin-bottom: 3rem;
-        }
-
+        .protocols-section { margin-bottom: 2rem; }
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            border-right: 4px solid var(--accent-primary);
-            padding-right: 1rem;
+            gap: 0.5rem;
+            border-right: 3px solid var(--accent);
+            padding-right: 0.8rem;
         }
 
         .protocols-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.8rem;
+            gap: 1.5rem;
         }
 
-        /* Protocol Card */
         .protocol-card {
             background: var(--card-bg);
             backdrop-filter: blur(8px);
             border: 1px solid var(--card-border);
-            border-radius: 1.5rem;
+            border-radius: 1.2rem;
             overflow: hidden;
-            transition: all 0.25s ease;
-            box-shadow: 0 8px 20px var(--shadow-color);
+            box-shadow: var(--shadow);
         }
 
         .protocol-header {
-            padding: 1.2rem 1.5rem;
+            padding: 1rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-light);
+            flex-wrap: wrap;
+            gap: 0.8rem;
             cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .protocol-header:hover {
-            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .protocol-name {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 0.5rem;
         }
-
-        .protocol-name i {
-            color: var(--accent-primary);
-            width: 1.8rem;
-            text-align: center;
-        }
+        .protocol-name i { color: var(--accent); width: 1.5rem; }
 
         .protocol-stats {
             display: flex;
-            gap: 1.2rem;
-            font-size: 0.85rem;
-        }
-
-        .protocol-stats span {
-            background: rgba(0,0,0,0.2);
-            padding: 0.2rem 0.6rem;
-            border-radius: 2rem;
-            font-weight: 500;
-        }
-
-        .health-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: rgba(16, 185, 129, 0.15);
-            padding: 0.2rem 0.6rem;
-            border-radius: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             font-size: 0.75rem;
-            font-weight: 600;
+        }
+        .protocol-stats span {
+            background: rgba(0,0,0,0.15);
+            padding: 0.2rem 0.5rem;
+            border-radius: 1rem;
         }
 
         .protocol-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: max-height 0.35s ease;
         }
-
-        .protocol-card.open .protocol-body {
-            max-height: 800px;
-        }
+        .protocol-card.open .protocol-body { max-height: 800px; }
 
         .file-list {
-            padding: 1rem 1.5rem 1.5rem;
+            padding: 0.8rem 1rem 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 0.7rem;
         }
 
         .file-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 0.8rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 0.9rem;
+            padding: 0.7rem 0.9rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 0.5rem;
-            transition: all 0.2s;
+            transition: all 0.15s;
             border: 1px solid transparent;
         }
-
-        .file-item:hover {
-            border-color: var(--accent-primary);
-            transform: translateX(-4px);
-        }
+        .file-item:hover { border-color: var(--accent); }
 
         .file-info {
             display: flex;
             flex-direction: column;
             gap: 0.2rem;
+            flex: 2;
+            min-width: 140px;
         }
-
         .file-name {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-family: monospace;
-            word-break: break-all;
+            word-break: break-word;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
         }
+        .online-status {
+            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.1rem 0.4rem;
+            border-radius: 1rem;
+        }
+        .online-status .online { color: var(--success); }
+        .online-status .offline { color: var(--danger); }
 
         .file-meta {
             display: flex;
-            gap: 1rem;
-            font-size: 0.7rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.65rem;
             color: var(--text-muted);
         }
 
         .download-btn {
-            background: var(--accent-primary);
+            background: var(--accent);
             color: white;
-            border: none;
             border-radius: 2rem;
-            padding: 0.4rem 1rem;
-            font-size: 0.75rem;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: 0.2s;
         }
+        .download-btn:hover { opacity: 0.85; transform: scale(0.98); }
 
-        .download-btn:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
-        /* Chart Wrapper */
         .chart-container {
             background: var(--card-bg);
             backdrop-filter: blur(8px);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            border-radius: 1.2rem;
+            padding: 1rem;
             border: 1px solid var(--card-border);
+            margin-top: 1.5rem;
         }
 
         footer {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
             padding: 1rem;
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border-top: 1px solid var(--border-light);
         }
 
-        /* Loading / Error */
         .loading, .error-message {
             text-align: center;
-            padding: 3rem;
+            padding: 2rem;
             background: var(--card-bg);
-            border-radius: 2rem;
+            border-radius: 1.2rem;
+            grid-column: 1 / -1;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .fa-spinner {
-            animation: spin 1s linear infinite;
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fa-spinner { animation: spin 1s linear infinite; }
 
         @media (max-width: 640px) {
-            body { padding: 1rem; }
+            body { padding: 1rem 0.8rem; }
             .protocols-grid { grid-template-columns: 1fr; }
-            .file-item { flex-direction: column; align-items: flex-start; }
+            .file-item { flex-direction: column; align-items: stretch; }
+            .download-btn { align-self: flex-start; }
+            .stat-value { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
-<div class="container" id="app">
+<div class="container">
     <div class="header">
         <div class="title-section">
             <h1><i class="fas fa-network-wired"></i> V2Ray Config Hub</h1>
-            <p>مدیریت متمرکز و حرفه‌ای کانفیگ‌های پروکسی | بروزرسانی خودکار</p>
+            <p>مدیریت پویای کانفیگ‌ها | بروزرسانی لحظه‌ای</p>
         </div>
-        <button class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i> تم شب
-        </button>
+        <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> تم شب</button>
     </div>
 
-    <div id="statsPanel" class="stats-grid">
+    <div class="stats-grid" id="statsPanel">
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value" id="totalConfigs">-</div><div class="stat-label">مجموع کانفیگ‌ها</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-code-branch"></i></div><div class="stat-value" id="totalFiles">-</div><div class="stat-label">فایل‌های پیکربندی</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-database"></i></div><div class="stat-value" id="totalSize">-</div><div class="stat-label">حجم کل (MB)</div></div>
@@ -375,32 +313,21 @@
     </div>
 
     <div class="protocols-section">
-        <div class="section-title">
-            <i class="fas fa-cubes"></i>
-            <span>پروتکل‌های فعال</span>
-        </div>
-        <div id="protocolsGrid" class="protocols-grid">
-            <div class="loading"><i class="fas fa-spinner fa-pulse"></i> در حال بارگذاری اطلاعات...</div>
-        </div>
+        <div class="section-title"><i class="fas fa-cubes"></i><span>پروتکل‌های فعال</span></div>
+        <div id="protocolsGrid" class="protocols-grid"><div class="loading"><i class="fas fa-spinner fa-pulse"></i> بارگذاری...</div></div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="healthChart" width="400" height="200" style="max-height: 300px; width: 100%;"></canvas>
-    </div>
-
-    <footer>
-        <i class="fas fa-sync-alt"></i> این داشبورد به‌صورت خودکار با هر بار اجرای GitHub Actions بروز می‌شود.
-    </footer>
+    <div class="chart-container"><canvas id="healthChart"></canvas></div>
+    <footer><i class="fas fa-sync-alt"></i> به‌روزرسانی خودکار با GitHub Actions | وضعیت آنلاین فایل‌ها بررسی می‌شود.</footer>
 </div>
 
 <script>
-    // Global Chart instance
     let healthChart = null;
+    const onlineCache = new Map();
 
-    // Theme handling with localStorage
+    // Theme
     const themeToggle = document.getElementById('themeToggle');
-    const storedTheme = localStorage.getItem('v2ray_theme');
-    if (storedTheme === 'dark') {
+    if (localStorage.getItem('v2ray_theme') === 'dark') {
         document.body.classList.add('dark');
         themeToggle.innerHTML = '<i class="fas fa-sun"></i> تم روز';
     } else {
@@ -411,157 +338,141 @@
         const isDark = document.body.classList.contains('dark');
         localStorage.setItem('v2ray_theme', isDark ? 'dark' : 'light');
         themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> تم روز' : '<i class="fas fa-moon"></i> تم شب';
+        if (healthChart) healthChart.update();
     });
 
-    // Helper: format bytes to MB
     function formatBytes(bytes) {
         if (bytes === 0) return '0 B';
         const mb = bytes / (1024 * 1024);
         return mb.toFixed(2) + ' MB';
     }
 
-    // Helper: format date
     function formatDate(isoString) {
         if (!isoString) return 'نامشخص';
-        const date = new Date(isoString);
-        return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeStyle: 'short' }).format(date);
+        return new Date(isoString).toLocaleString('fa-IR');
     }
 
-    // Fetch both JSON files in parallel
-    async function loadDashboard() {
-        const gridContainer = document.getElementById('protocolsGrid');
+    async function checkFileStatus(url) {
+        if (onlineCache.has(url)) return onlineCache.get(url);
         try {
-            // Show loading skeleton
-            gridContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-pulse"></i> بارگذاری داده‌ها از سرور...</div>';
-            
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 3000);
+            const res = await fetch(url, { method: 'HEAD', signal: controller.signal });
+            clearTimeout(timeout);
+            onlineCache.set(url, res.ok);
+            return res.ok;
+        } catch {
+            onlineCache.set(url, false);
+            return false;
+        }
+    }
+
+    async function loadDashboard() {
+        const grid = document.getElementById('protocolsGrid');
+        try {
             const [metadataRes, statsRes] = await Promise.all([
-                fetch('config/metadata.json'),
-                fetch('stats.json')
+                fetch('config/metadata.json?t=' + Date.now()),
+                fetch('stats.json?t=' + Date.now())
             ]);
-            
             if (!metadataRes.ok || !statsRes.ok) throw new Error('خطا در دریافت فایل‌های داده');
             
             const metadata = await metadataRes.json();
             const stats = await statsRes.json();
-            
-            // Update Stat Cards
-            const totalConfigs = stats.summary?.total_configs || Object.values(stats).reduce((acc, p) => acc + (p.raw_count || 0), 0);
+
+            // ********** بخش آمارگیری از کد شماره 1 (که درست کار می‌کند) **********
+            const totalConfigs = stats.summary?.total_configs || 
+                                 Object.values(stats).reduce((acc, p) => acc + (p.raw_count || 0), 0);
             const totalFiles = Object.values(metadata.protocols).reduce((acc, p) => acc + (p.files?.length || 0), 0);
             const totalSizeBytes = Object.values(metadata.protocols).reduce((acc, p) => acc + (p.total_size_bytes || 0), 0);
+            // *******************************************************************
+
             document.getElementById('totalConfigs').innerText = totalConfigs.toLocaleString();
             document.getElementById('totalFiles').innerText = totalFiles;
             document.getElementById('totalSize').innerText = formatBytes(totalSizeBytes);
             document.getElementById('lastUpdate').innerHTML = `<i class="fas fa-history"></i> ${formatDate(metadata.last_update)}`;
-            
-            // Build protocols grid dynamically
-            const protocolsList = Object.entries(metadata.protocols);
-            if (protocolsList.length === 0) {
-                gridContainer.innerHTML = '<div class="error-message">هیچ پروتکلی یافت نشد.</div>';
+
+            const protocols = Object.entries(metadata.protocols);
+            if (!protocols.length) {
+                grid.innerHTML = '<div class="error-message">هیچ پروتکلی یافت نشد</div>';
                 return;
             }
-            
-            let protocolsHTML = '';
-            for (const [protoName, protoData] of protocolsList) {
-                const files = protoData.files || [];
-                const totalConfigsProto = protoData.total_configs || files.reduce((sum, f) => sum + (f.config_count || 0), 0);
-                const totalSizeProto = protoData.total_size_bytes || files.reduce((sum, f) => sum + (f.size_bytes || 0), 0);
-                // health stats from stats.json (if exists)
-                const health = stats[protoName]?.health_sample?.percent || 0;
+
+            let html = '';
+            for (const [proto, data] of protocols) {
+                const files = data.files || [];
+                const totalConfigsProto = data.total_configs || files.reduce((s,f)=> s + (f.config_count || 0), 0);
+                const health = stats[proto]?.health_sample?.percent || 0;
                 const healthColor = health >= 60 ? '#10b981' : (health >= 30 ? '#f59e0b' : '#ef4444');
-                
-                let filesHTML = '';
-                files.forEach(file => {
-                    const filePath = file.path || `config/${protoName}/${file.name}`;
-                    filesHTML += `
-                        <div class="file-item">
+
+                let filesHtml = '';
+                for (const file of files) {
+                    const fileUrl = file.path;
+                    filesHtml += `
+                        <div class="file-item" data-file-url="${fileUrl}">
                             <div class="file-info">
-                                <div class="file-name"><i class="fas fa-file-alt"></i> ${file.name}</div>
+                                <div class="file-name">
+                                    <i class="fas fa-file-alt"></i> ${file.name}
+                                    <span class="online-status" id="status-${file.name.replace(/[^a-zA-Z0-9]/g,'-')}"><i class="fas fa-spinner fa-pulse"></i> بررسی...</span>
+                                </div>
                                 <div class="file-meta">
                                     <span><i class="fas fa-weight-hanging"></i> ${formatBytes(file.size_bytes)}</span>
                                     <span><i class="fas fa-hashtag"></i> ${file.config_count || 0} کانفیگ</span>
                                     ${file.parts > 1 ? `<span><i class="fas fa-layer-group"></i> بخش ${file.parts}</span>` : ''}
                                 </div>
                             </div>
-                            <a href="${filePath}" class="download-btn" download>
-                                <i class="fas fa-download"></i> دریافت
-                            </a>
+                            <a href="${fileUrl}" class="download-btn" download><i class="fas fa-download"></i> دریافت</a>
                         </div>
                     `;
-                });
-                
-                protocolsHTML += `
+                }
+
+                html += `
                     <div class="protocol-card">
-                        <div class="protocol-header" onclick="this.parentElement.classList.toggle('open')">
-                            <div class="protocol-name">
-                                <i class="fas fa-shield-alt"></i> ${protoName.toUpperCase()}
-                            </div>
+                        <div class="protocol-header" onclick="this.closest('.protocol-card').classList.toggle('open')">
+                            <div class="protocol-name"><i class="fas fa-shield-alt"></i> ${proto.toUpperCase()}</div>
                             <div class="protocol-stats">
                                 <span><i class="fas fa-database"></i> ${totalConfigsProto.toLocaleString()}</span>
                                 <span><i class="fas fa-file"></i> ${files.length}</span>
-                                <span class="health-badge" style="color:${healthColor}; border-color:${healthColor}"><i class="fas fa-heartbeat"></i> ${health}%</span>
+                                <span style="color:${healthColor}"><i class="fas fa-heartbeat"></i> ${health}%</span>
                             </div>
                         </div>
-                        <div class="protocol-body">
-                            <div class="file-list">
-                                ${filesHTML || '<div class="file-item">هیچ فایلی موجود نیست</div>'}
-                            </div>
-                        </div>
+                        <div class="protocol-body"><div class="file-list">${filesHtml || '<div class="file-item">فاقد فایل</div>'}</div></div>
                     </div>
                 `;
             }
-            gridContainer.innerHTML = protocolsHTML;
-            
-            // Draw Health Chart using Chart.js
+            grid.innerHTML = html;
+
+            // بررسی وضعیت آنلاین
+            const fileItems = document.querySelectorAll('.file-item');
+            for (const item of fileItems) {
+                const url = item.getAttribute('data-file-url');
+                if (!url) continue;
+                const statusSpan = item.querySelector('.online-status');
+                if (!statusSpan) continue;
+                const isOnline = await checkFileStatus(url);
+                statusSpan.innerHTML = isOnline ? '<i class="fas fa-check-circle online"></i> قابل دسترس' : '<i class="fas fa-times-circle offline"></i> غیرقابل دسترس';
+            }
+
+            // نمودار سلامت
             const ctx = document.getElementById('healthChart').getContext('2d');
-            const labels = [];
-            const healthPercentages = [];
-            for (const [proto, data] of Object.entries(stats)) {
-                if (data.health_sample && proto !== 'summary') {
+            const labels = [], healthData = [];
+            for (const [proto, val] of Object.entries(stats)) {
+                if (val.health_sample && proto !== 'summary') {
                     labels.push(proto.toUpperCase());
-                    healthPercentages.push(data.health_sample.percent);
+                    healthData.push(val.health_sample.percent);
                 }
             }
             if (healthChart) healthChart.destroy();
             healthChart = new Chart(ctx, {
                 type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'نرخ سلامت کانفیگ‌ها (%)',
-                        data: healthPercentages,
-                        backgroundColor: 'rgba(79, 70, 229, 0.7)',
-                        borderRadius: 12,
-                        barPercentage: 0.65
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } },
-                        tooltip: { callbacks: { label: (ctx) => `${ctx.raw}% کانفیگ فعال` } }
-                    },
-                    scales: {
-                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'درصد سلامت', color: '#94a3b8' }, grid: { color: 'rgba(200,200,200,0.1)' } },
-                        x: { ticks: { color: getComputedStyle(document.body).getPropertyValue('--text-secondary') } }
-                    }
-                }
+                data: { labels, datasets: [{ label: 'نرخ سلامت کانفیگ‌ها (%)', data: healthData, backgroundColor: 'rgba(79, 70, 229, 0.7)', borderRadius: 8 }] },
+                options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } } }, scales: { y: { beginAtZero: true, max: 100 } } }
             });
-        } catch (error) {
-            console.error('Dashboard Error:', error);
-            gridContainer.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> خطا در بارگذاری: ${error.message}. لطفاً بعداً تلاش کنید.</div>`;
+        } catch (err) {
+            grid.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> خطا: ${err.message}</div>`;
         }
     }
 
-    // Re-run chart color adjustment when theme changes (optional)
-    const observer = new MutationObserver(() => {
-        if (healthChart) {
-            const textColor = getComputedStyle(document.body).getPropertyValue('--text-primary');
-            healthChart.options.plugins.legend.labels.color = textColor;
-            healthChart.update();
-        }
-    });
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    new MutationObserver(() => { if (healthChart) healthChart.update(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     loadDashboard();
 </script>
