@@ -118,16 +118,57 @@
         .stat-value { font-size: 1.8rem; font-weight: 800; line-height: 1.2; }
         .stat-label { font-size: 0.75rem; color: var(--text-muted); }
 
+        /* کارت آخرین بروزرسانی: فونت کوچک‌تر و دو خطی */
+        .stat-card-lastupdate .stat-value {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .stat-card-lastupdate .stat-value span:first-child {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .stat-card-lastupdate .stat-value span:last-child {
+            font-size: 0.85rem;
+            font-weight: normal;
+            color: var(--text-muted);
+        }
+
         .protocols-section { margin-bottom: 2rem; }
+        
+        /* بخش عنوان پروتکل‌ها با توضیح کناری */
         .section-title {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1.2rem;
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
             border-right: 3px solid var(--accent);
             padding-right: 0.8rem;
+        }
+        .section-title .main-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .section-subnote {
+            font-size: 0.65rem;
+            font-weight: normal;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.05);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .section-subnote {
+                white-space: normal;
+                font-size: 0.6rem;
+            }
         }
 
         .protocols-grid {
@@ -136,13 +177,12 @@
             gap: 1.5rem;
         }
 
-        /* اصلاح مشکل مخفی شدن زیرمنوها */
         .protocol-card {
             background: var(--card-bg);
             backdrop-filter: blur(8px);
             border: 1px solid var(--card-border);
             border-radius: 1.2rem;
-            overflow: visible; /* کلید حل مشکل بریدگی */
+            overflow: visible;
             box-shadow: var(--shadow);
             transition: all 0.2s;
         }
@@ -188,8 +228,8 @@
         }
 
         .protocol-card.open .protocol-body {
-            max-height: 2000px; /* ارتفاع کافی برای تمام فایل‌ها */
-            overflow-y: auto;  /* اسکرول در صورت نیاز */
+            max-height: 2000px;
+            overflow-y: auto;
         }
 
         .file-list {
@@ -315,15 +355,22 @@
         <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> تم شب</button>
     </div>
 
-    <div class="stats-grid">
+    <div class="stats-grid" id="statsPanel">
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value" id="totalConfigs">-</div><div class="stat-label">مجموع کانفیگ‌ها</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-code-branch"></i></div><div class="stat-value" id="totalFiles">-</div><div class="stat-label">فایل‌های پیکربندی</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-database"></i></div><div class="stat-value" id="totalSize">-</div><div class="stat-label">حجم کل (MB)</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value" id="lastUpdate">-</div><div class="stat-label">آخرین بروزرسانی</div></div>
+        <div class="stat-card stat-card-lastupdate">
+            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-value" id="lastUpdate"></div>
+            <div class="stat-label">آخرین بروزرسانی</div>
+        </div>
     </div>
 
     <div class="protocols-section">
-        <div class="section-title"><i class="fas fa-cubes"></i><span>پروتکل‌های فعال</span></div>
+        <div class="section-title">
+            <span class="main-title"><i class="fas fa-cubes"></i> پروتکل‌های فعال</span>
+            <span class="section-subnote">تمامی پروتکل‌ها و تمامی فایل‌ها هر 6 ساعت بروزرسانی می‌شوند.</span>
+        </div>
         <div id="protocolsGrid" class="protocols-grid"><div class="loading"><i class="fas fa-spinner fa-pulse"></i> بارگذاری...</div></div>
     </div>
 
@@ -358,9 +405,20 @@
         return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
     }
 
-    function formatDate(isoString) {
-        if (!isoString) return 'نامشخص';
-        return new Date(isoString).toLocaleString('fa-IR');
+    // تبدیل تاریخ به دو خط: خط اول تاریخ شمسی، خط دوم ساعت
+    function formatLastUpdate(isoString) {
+        if (!isoString) return '<span>نامشخص</span><span></span>';
+        const date = new Date(isoString);
+        // استفاده از locale fa-IR برای نمایش تاریخ و ساعت به صورت شمسی
+        const full = date.toLocaleString('fa-IR', { dateStyle: 'medium', timeStyle: 'short' });
+        const parts = full.split('،');
+        if (parts.length === 2) {
+            return `<span>${parts[0].trim()}</span><span>${parts[1].trim()}</span>`;
+        }
+        // fallback
+        const dateOnly = date.toLocaleDateString('fa-IR');
+        const timeOnly = date.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+        return `<span>${dateOnly}</span><span>${timeOnly}</span>`;
     }
 
     async function checkFileStatus(url) {
@@ -398,7 +456,8 @@
             document.getElementById('totalConfigs').innerText = totalConfigs.toLocaleString();
             document.getElementById('totalFiles').innerText = totalFiles;
             document.getElementById('totalSize').innerText = formatBytes(totalSizeBytes);
-            document.getElementById('lastUpdate').innerHTML = `<i class="fas fa-history"></i> ${formatDate(metadata.last_update)}`;
+            // تاریخ و ساعت به دو خط
+            document.getElementById('lastUpdate').innerHTML = formatLastUpdate(metadata.last_update);
 
             const protocols = Object.entries(metadata.protocols);
             if (!protocols.length) {
@@ -411,7 +470,6 @@
                 const files = data.files || [];
                 const totalConfigsProto = data.total_configs || files.reduce((s,f)=> s + (f.config_count || 0), 0);
                 let health = stats[proto]?.health_sample?.percent || 0;
-                // گرد کردن به یک رقم اعشار
                 health = parseFloat(health).toFixed(1);
                 const healthColor = health >= 60 ? '#10b981' : (health >= 30 ? '#f59e0b' : '#ef4444');
 
@@ -465,7 +523,7 @@
                 statusSpan.innerHTML = isOnline ? '<i class="fas fa-check-circle online"></i> قابل دسترس' : '<i class="fas fa-times-circle offline"></i> غیرقابل دسترس';
             }
 
-            // رسم نمودار سلامت با یک رقم اعشار در tooltip
+            // رسم نمودار سلامت با یک رقم اعشار
             const ctx = document.getElementById('healthChart').getContext('2d');
             const labels = [];
             const healthData = [];
@@ -492,11 +550,7 @@
                     maintainAspectRatio: true,
                     plugins: {
                         legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } },
-                        tooltip: {
-                            callbacks: {
-                                label: (context) => `${context.raw}% کانفیگ فعال`
-                            }
-                        }
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.raw}% کانفیگ فعال` } }
                     },
                     scales: {
                         y: { beginAtZero: true, max: 100, title: { display: true, text: 'درصد سلامت', color: '#94a3b8' }, ticks: { callback: (val) => val + '%' } }
