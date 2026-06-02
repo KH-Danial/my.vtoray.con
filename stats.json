@@ -1,0 +1,82 @@
+{
+  "vless": {
+    "raw_count": 166787,
+    "final_count": 166787,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 202,
+      "percent": 67.33333333333333
+    }
+  },
+  "reality": {
+    "raw_count": 68255,
+    "final_count": 68255,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 108,
+      "percent": 36.0
+    }
+  },
+  "vmess": {
+    "raw_count": 24279,
+    "final_count": 24279,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 95,
+      "percent": 31.666666666666664
+    }
+  },
+  "trojan": {
+    "raw_count": 33536,
+    "final_count": 33536,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 216,
+      "percent": 72.0
+    }
+  },
+  "hysteria2": {
+    "raw_count": 3400,
+    "final_count": 3400,
+    "health_sample": {
+      "sampled": 0,
+      "alive": 0,
+      "percent": 0
+    }
+  },
+  "shadowsocks": {
+    "raw_count": 35550,
+    "final_count": 35550,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 68,
+      "percent": 22.666666666666664
+    }
+  },
+  "socks": {
+    "raw_count": 4766,
+    "final_count": 4766,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 91,
+      "percent": 30.333333333333336
+    }
+  },
+  "wireguard": {
+    "raw_count": 19,
+    "final_count": 19,
+    "health_sample": {
+      "sampled": 0,
+      "alive": 0,
+      "percent": 0
+    }
+  },
+  "summary": {
+    "total_configs": 336592,
+    "total_sources": 354,
+    "execution_time_sec": 679.1422875009999,
+    "timestamp": "2026-06-02 01:44:12 UTC",
+    "successful_sources": 345,
+    "failed_sources": 9
+  }
+}
