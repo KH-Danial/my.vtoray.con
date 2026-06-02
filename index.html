@@ -57,7 +57,6 @@
             width: 100%;
         }
 
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -99,7 +98,6 @@
             color: var(--text-primary);
         }
 
-        /* Stats Cards */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -122,7 +120,6 @@
         .stat-value { font-size: 1.8rem; font-weight: 800; line-height: 1.2; }
         .stat-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.3px; }
 
-        /* Protocols Section */
         .protocols-section { margin-bottom: 2.5rem; }
         .section-title {
             font-size: 1.3rem;
@@ -141,7 +138,6 @@
             gap: 1.5rem;
         }
 
-        /* Protocol Card */
         .protocol-card {
             background: var(--card-bg);
             backdrop-filter: blur(8px);
@@ -330,7 +326,6 @@
 
 <script>
     let healthChart = null;
-    // ذخیره وضعیت آنلاین فایل‌ها برای جلوگیری از درخواست مجدد
     const onlineCache = new Map();
 
     // Theme
@@ -349,10 +344,19 @@
         if (healthChart) healthChart.update();
     });
 
-    function formatBytes(bytes) { return (bytes / (1024 * 1024)).toFixed(2) + ' MB'; }
-    function formatDate(iso) { return iso ? new Date(iso).toLocaleString('fa-IR') : 'نامشخص'; }
+    function formatBytes(bytes) {
+        if (!bytes || bytes === 0) return '0 MB';
+        return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+    function formatDate(iso) {
+        if (!iso) return 'نامشخص';
+        try {
+            return new Date(iso).toLocaleString('fa-IR');
+        } catch(e) {
+            return iso;
+        }
+    }
 
-    // بررسی وضعیت آنلاین یک فایل (HEAD درخواست با timeout)
     async function checkFileStatus(url) {
         if (onlineCache.has(url)) return onlineCache.get(url);
         try {
@@ -376,39 +380,63 @@
                 fetch('config/metadata.json?t=' + Date.now()),
                 fetch('stats.json?t=' + Date.now())
             ]);
-            if (!metaRes.ok || !statsRes.ok) throw new Error('خطا در دریافت داده');
-            const metadata = await metaRes.json();
-            const stats = await statsRes.json();
+            if (!metaRes.ok) throw new Error('metadata.json دریافت نشد');
+            if (!statsRes.ok) console.warn('stats.json دریافت نشد');
 
-            // آمار کلی
-            const totalConfigs = metadata.summary?.total_configs || 0;
-            const totalFiles = Object.values(metadata.protocols).reduce((a,b) => a + (b.files?.length || 0), 0);
-            const totalSize = Object.values(metadata.protocols).reduce((a,b) => a + (b.total_size_bytes || 0), 0);
+            const metadata = await metaRes.json();
+            let stats = {};
+            if (statsRes.ok) stats = await statsRes.json();
+
+            // محاسبه آمار از metadata.protocols (بهترین روش)
+            let totalConfigs = 0;
+            let totalFiles = 0;
+            let totalSize = 0;
+            const protocolsData = metadata.protocols || {};
+            for (const proto in protocolsData) {
+                const protoData = protocolsData[proto];
+                const files = protoData.files || [];
+                totalFiles += files.length;
+                totalSize += protoData.total_size_bytes || 0;
+                // جمع config_count از فایل‌ها
+                for (const file of files) {
+                    totalConfigs += file.config_count || 0;
+                }
+            }
+            // همچنین می‌توان از summary استفاده کرد ولی برای اطمینان خودمان محاسبه می‌کنیم
+            if (metadata.summary) {
+                // می‌توانیم برای نمایش خطا از summary استفاده کنیم اما اولویت با محاسبه مستقیم است
+                console.log('Summary from metadata:', metadata.summary);
+            }
             document.getElementById('totalConfigs').innerText = totalConfigs.toLocaleString();
             document.getElementById('totalFiles').innerText = totalFiles;
             document.getElementById('totalSize').innerText = formatBytes(totalSize);
             document.getElementById('lastUpdate').innerHTML = `<i class="fas fa-history"></i> ${formatDate(metadata.last_update)}`;
 
-            const protocols = Object.entries(metadata.protocols);
-            if (!protocols.length) { grid.innerHTML = '<div class="error-message">هیچ پروتکلی یافت نشد</div>'; return; }
+            // ساخت لیست پروتکل‌ها
+            const protocols = Object.entries(protocolsData);
+            if (!protocols.length) {
+                grid.innerHTML = '<div class="error-message">هیچ پروتکلی یافت نشد</div>';
+                return;
+            }
 
             let html = '';
             for (const [proto, data] of protocols) {
                 const files = data.files || [];
-                const totalConfigsProto = data.total_configs || files.reduce((s,f)=> s + (f.config_count||0),0);
+                const totalConfigsProto = data.total_configs || files.reduce((s,f)=> s + (f.config_count||0), 0);
                 const health = stats[proto]?.health_sample?.percent || 0;
                 const healthColor = health >= 60 ? '#10b981' : (health >= 30 ? '#f59e0b' : '#ef4444');
 
                 let filesHtml = '';
                 for (const file of files) {
                     const fileUrl = file.path; // مسیر نسبی مثل config/reality/reality.txt
-                    const fileFullUrl = fileUrl; // درخواست به همان سرور (GitHub Pages)
+                    // ایمن‌سازی نام برای id
+                    const safeId = file.name.replace(/[^a-zA-Z0-9]/g, '-');
                     filesHtml += `
-                        <div class="file-item" data-file-url="${fileFullUrl}">
+                        <div class="file-item" data-file-url="${fileUrl}">
                             <div class="file-info">
                                 <div class="file-name">
                                     <i class="fas fa-file-alt"></i> ${file.name}
-                                    <span class="online-status" id="status-${file.name.replace(/\./g,'-')}"><i class="fas fa-spinner fa-pulse"></i> بررسی...</span>
+                                    <span class="online-status" id="status-${safeId}"><i class="fas fa-spinner fa-pulse"></i> بررسی...</span>
                                 </div>
                                 <div class="file-meta">
                                     <span><i class="fas fa-weight-hanging"></i> ${formatBytes(file.size_bytes)}</span>
@@ -428,7 +456,7 @@
                             <div class="protocol-stats">
                                 <span><i class="fas fa-database"></i> ${totalConfigsProto.toLocaleString()}</span>
                                 <span><i class="fas fa-file"></i> ${files.length}</span>
-                                <span class="health-badge" style="color:${healthColor}"><i class="fas fa-heartbeat"></i> ${health}%</span>
+                                <span style="color:${healthColor}"><i class="fas fa-heartbeat"></i> ${health}%</span>
                             </div>
                         </div>
                         <div class="protocol-body"><div class="file-list">${filesHtml || '<div class="file-item">فاقد فایل</div>'}</div></div>
@@ -437,13 +465,14 @@
             }
             grid.innerHTML = html;
 
-            // بعد از رندر شدن، وضعیت آنلاین هر فایل را بررسی می‌کنیم (هر فایل فقط یک بار)
+            // بررسی وضعیت آنلاین فایل‌ها
             const fileItems = document.querySelectorAll('.file-item');
             for (const item of fileItems) {
                 const url = item.getAttribute('data-file-url');
                 if (!url) continue;
                 const fileName = url.split('/').pop();
-                const statusSpan = item.querySelector('.online-status');
+                const safeId = fileName.replace(/[^a-zA-Z0-9]/g, '-');
+                const statusSpan = document.getElementById(`status-${safeId}`);
                 if (!statusSpan) continue;
                 const isOnline = await checkFileStatus(url);
                 if (isOnline) {
@@ -463,19 +492,22 @@
                 }
             }
             if (healthChart) healthChart.destroy();
-            healthChart = new Chart(ctx, {
-                type: 'bar',
-                data: { labels, datasets: [{ label: 'نرخ سلامت کانفیگ‌ها (%)', data: healthData, backgroundColor: 'rgba(79, 70, 229, 0.7)', borderRadius: 8 }] },
-                options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } } }, scales: { y: { beginAtZero: true, max: 100 } } }
-            });
+            if (labels.length) {
+                healthChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: { labels, datasets: [{ label: 'نرخ سلامت کانفیگ‌ها (%)', data: healthData, backgroundColor: 'rgba(79, 70, 229, 0.7)', borderRadius: 8 }] },
+                    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } } }, scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'درصد' } } } }
+                });
+            } else {
+                ctx.canvas.parentElement.innerHTML = '<div class="error-message">داده‌ای برای نمایش نمودار وجود ندارد</div>';
+            }
         } catch (err) {
+            console.error(err);
             grid.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> خطا: ${err.message}</div>`;
         }
     }
 
-    // در صورت تغییر تم، رنگ نمودار به‌روز شود
     new MutationObserver(() => { if (healthChart) healthChart.update(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
     loadDashboard();
 </script>
 </body>
