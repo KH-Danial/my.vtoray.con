@@ -63,7 +63,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             padding: 1rem 1.5rem;
             background: var(--header-blur);
             backdrop-filter: blur(12px);
@@ -84,7 +84,6 @@
         .title-section p {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 0.2rem;
         }
 
         .theme-toggle {
@@ -94,7 +93,6 @@
             padding: 0.5rem 1rem;
             cursor: pointer;
             font-weight: 500;
-            transition: 0.2s;
             color: var(--text-primary);
         }
 
@@ -111,16 +109,16 @@
             border: 1px solid var(--card-border);
             border-radius: 1.2rem;
             padding: 1rem 1.2rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
             box-shadow: var(--shadow);
         }
 
         .stat-card:hover { transform: translateY(-3px); }
         .stat-icon { font-size: 1.8rem; color: var(--accent); margin-bottom: 0.5rem; }
         .stat-value { font-size: 1.8rem; font-weight: 800; line-height: 1.2; }
-        .stat-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.3px; }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); }
 
-        .protocols-section { margin-bottom: 2.5rem; }
+        .protocols-section { margin-bottom: 2rem; }
         .section-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -144,7 +142,6 @@
             border: 1px solid var(--card-border);
             border-radius: 1.2rem;
             overflow: hidden;
-            transition: all 0.2s;
             box-shadow: var(--shadow);
         }
 
@@ -271,7 +268,7 @@
 
         footer {
             text-align: center;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             padding: 1rem;
             color: var(--text-muted);
             font-size: 0.75rem;
@@ -303,7 +300,7 @@
     <div class="header">
         <div class="title-section">
             <h1><i class="fas fa-network-wired"></i> V2Ray Config Hub</h1>
-            <p>مدیریت پویای کانفیگ‌ها | بروزرسانی لحظه‌ای از متادیتا</p>
+            <p>مدیریت پویای کانفیگ‌ها | بروزرسانی لحظه‌ای</p>
         </div>
         <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> تم شب</button>
     </div>
@@ -321,7 +318,7 @@
     </div>
 
     <div class="chart-container"><canvas id="healthChart"></canvas></div>
-    <footer><i class="fas fa-sync-alt"></i> به‌روزرسانی خودکار با GitHub Actions | وضعیت آنلاین فایل‌ها به صورت لحظه‌ای بررسی می‌شود.</footer>
+    <footer><i class="fas fa-sync-alt"></i> به‌روزرسانی خودکار با GitHub Actions | وضعیت آنلاین فایل‌ها بررسی می‌شود.</footer>
 </div>
 
 <script>
@@ -344,18 +341,8 @@
         if (healthChart) healthChart.update();
     });
 
-    function formatBytes(bytes) {
-        if (!bytes || bytes === 0) return '0 MB';
-        return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-    }
-    function formatDate(iso) {
-        if (!iso) return 'نامشخص';
-        try {
-            return new Date(iso).toLocaleString('fa-IR');
-        } catch(e) {
-            return iso;
-        }
-    }
+    function formatBytes(bytes) { return (bytes / (1024 * 1024)).toFixed(2) + ' MB'; }
+    function formatDate(iso) { return iso ? new Date(iso).toLocaleString('fa-IR') : 'نامشخص'; }
 
     async function checkFileStatus(url) {
         if (onlineCache.has(url)) return onlineCache.get(url);
@@ -364,9 +351,8 @@
             const timeout = setTimeout(() => controller.abort(), 3000);
             const res = await fetch(url, { method: 'HEAD', signal: controller.signal });
             clearTimeout(timeout);
-            const isOk = res.ok;
-            onlineCache.set(url, isOk);
-            return isOk;
+            onlineCache.set(url, res.ok);
+            return res.ok;
         } catch {
             onlineCache.set(url, false);
             return false;
@@ -380,63 +366,55 @@
                 fetch('config/metadata.json?t=' + Date.now()),
                 fetch('stats.json?t=' + Date.now())
             ]);
-            if (!metaRes.ok) throw new Error('metadata.json دریافت نشد');
-            if (!statsRes.ok) console.warn('stats.json دریافت نشد');
-
+            if (!metaRes.ok || !statsRes.ok) throw new Error('خطا در دریافت داده');
             const metadata = await metaRes.json();
-            let stats = {};
-            if (statsRes.ok) stats = await statsRes.json();
+            const stats = await statsRes.json();
 
-            // محاسبه آمار از metadata.protocols (بهترین روش)
+            // *** محاسبه صحیح مجموع کانفیگ‌ها و فایل‌ها از metadata ***
             let totalConfigs = 0;
             let totalFiles = 0;
-            let totalSize = 0;
-            const protocolsData = metadata.protocols || {};
-            for (const proto in protocolsData) {
-                const protoData = protocolsData[proto];
+            let totalSizeBytes = 0;
+
+            for (const [proto, protoData] of Object.entries(metadata.protocols)) {
                 const files = protoData.files || [];
                 totalFiles += files.length;
-                totalSize += protoData.total_size_bytes || 0;
-                // جمع config_count از فایل‌ها
                 for (const file of files) {
-                    totalConfigs += file.config_count || 0;
+                    totalConfigs += (file.config_count || 0);
+                    totalSizeBytes += (file.size_bytes || 0);
                 }
             }
-            // همچنین می‌توان از summary استفاده کرد ولی برای اطمینان خودمان محاسبه می‌کنیم
+            // همچنین می‌توان از summary استفاده کرد، اما برای اطمینان خودمان محاسبه می‌کنیم
             if (metadata.summary) {
-                // می‌توانیم برای نمایش خطا از summary استفاده کنیم اما اولویت با محاسبه مستقیم است
-                console.log('Summary from metadata:', metadata.summary);
+                // اطمینان از هماهنگی (اختیاری)
+                if (metadata.summary.total_configs) totalConfigs = metadata.summary.total_configs;
+                if (metadata.summary.total_files) totalFiles = metadata.summary.total_files;
+                if (metadata.summary.total_size_bytes) totalSizeBytes = metadata.summary.total_size_bytes;
             }
+
             document.getElementById('totalConfigs').innerText = totalConfigs.toLocaleString();
             document.getElementById('totalFiles').innerText = totalFiles;
-            document.getElementById('totalSize').innerText = formatBytes(totalSize);
+            document.getElementById('totalSize').innerText = formatBytes(totalSizeBytes);
             document.getElementById('lastUpdate').innerHTML = `<i class="fas fa-history"></i> ${formatDate(metadata.last_update)}`;
 
-            // ساخت لیست پروتکل‌ها
-            const protocols = Object.entries(protocolsData);
-            if (!protocols.length) {
-                grid.innerHTML = '<div class="error-message">هیچ پروتکلی یافت نشد</div>';
-                return;
-            }
+            const protocols = Object.entries(metadata.protocols);
+            if (!protocols.length) { grid.innerHTML = '<div class="error-message">هیچ پروتکلی یافت نشد</div>'; return; }
 
             let html = '';
             for (const [proto, data] of protocols) {
                 const files = data.files || [];
-                const totalConfigsProto = data.total_configs || files.reduce((s,f)=> s + (f.config_count||0), 0);
+                const totalConfigsProto = data.total_configs || files.reduce((s,f)=> s + (f.config_count||0),0);
                 const health = stats[proto]?.health_sample?.percent || 0;
                 const healthColor = health >= 60 ? '#10b981' : (health >= 30 ? '#f59e0b' : '#ef4444');
 
                 let filesHtml = '';
                 for (const file of files) {
-                    const fileUrl = file.path; // مسیر نسبی مثل config/reality/reality.txt
-                    // ایمن‌سازی نام برای id
-                    const safeId = file.name.replace(/[^a-zA-Z0-9]/g, '-');
+                    const fileUrl = file.path; // مسیر نسبی
                     filesHtml += `
                         <div class="file-item" data-file-url="${fileUrl}">
                             <div class="file-info">
                                 <div class="file-name">
                                     <i class="fas fa-file-alt"></i> ${file.name}
-                                    <span class="online-status" id="status-${safeId}"><i class="fas fa-spinner fa-pulse"></i> بررسی...</span>
+                                    <span class="online-status" id="status-${file.name.replace(/[^a-zA-Z0-9]/g,'-')}"><i class="fas fa-spinner fa-pulse"></i> بررسی...</span>
                                 </div>
                                 <div class="file-meta">
                                     <span><i class="fas fa-weight-hanging"></i> ${formatBytes(file.size_bytes)}</span>
@@ -470,16 +448,10 @@
             for (const item of fileItems) {
                 const url = item.getAttribute('data-file-url');
                 if (!url) continue;
-                const fileName = url.split('/').pop();
-                const safeId = fileName.replace(/[^a-zA-Z0-9]/g, '-');
-                const statusSpan = document.getElementById(`status-${safeId}`);
+                const statusSpan = item.querySelector('.online-status');
                 if (!statusSpan) continue;
                 const isOnline = await checkFileStatus(url);
-                if (isOnline) {
-                    statusSpan.innerHTML = '<i class="fas fa-check-circle online"></i> قابل دسترس';
-                } else {
-                    statusSpan.innerHTML = '<i class="fas fa-times-circle offline"></i> غیرقابل دسترس';
-                }
+                statusSpan.innerHTML = isOnline ? '<i class="fas fa-check-circle online"></i> قابل دسترس' : '<i class="fas fa-times-circle offline"></i> غیرقابل دسترس';
             }
 
             // رسم نمودار سلامت
@@ -492,22 +464,18 @@
                 }
             }
             if (healthChart) healthChart.destroy();
-            if (labels.length) {
-                healthChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: { labels, datasets: [{ label: 'نرخ سلامت کانفیگ‌ها (%)', data: healthData, backgroundColor: 'rgba(79, 70, 229, 0.7)', borderRadius: 8 }] },
-                    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } } }, scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'درصد' } } } }
-                });
-            } else {
-                ctx.canvas.parentElement.innerHTML = '<div class="error-message">داده‌ای برای نمایش نمودار وجود ندارد</div>';
-            }
+            healthChart = new Chart(ctx, {
+                type: 'bar',
+                data: { labels, datasets: [{ label: 'نرخ سلامت کانفیگ‌ها (%)', data: healthData, backgroundColor: 'rgba(79, 70, 229, 0.7)', borderRadius: 8 }] },
+                options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-primary') } } }, scales: { y: { beginAtZero: true, max: 100 } } }
+            });
         } catch (err) {
-            console.error(err);
             grid.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> خطا: ${err.message}</div>`;
         }
     }
 
     new MutationObserver(() => { if (healthChart) healthChart.update(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
     loadDashboard();
 </script>
 </body>
