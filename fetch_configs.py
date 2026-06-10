@@ -15,7 +15,6 @@ from urllib3.util.retry import Retry
 
 # =================== لیست لینک‌های جمع‌کننده کانفیگ ===================
 urls = [
-
     'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/xray_secure_loadbalanced_config.json',
     'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/proxy_configs.txt',
     'https://raw.githubusercontent.com/MahsaNetConfigTopic/config/refs/heads/main/xray_final.txt',
