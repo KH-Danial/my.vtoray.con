@@ -15,6 +15,23 @@ from urllib3.util.retry import Retry
 
 # =================== لیست لینک‌های جمع‌کننده کانفیگ ===================
 urls = [
+
+    'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/xray_secure_loadbalanced_config.json',
+    'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/proxy_configs.txt',
+    'https://raw.githubusercontent.com/MahsaNetConfigTopic/config/refs/heads/main/xray_final.txt',
+    'https://raw.githubusercontent.com/Mahdi0024/ProxyCollector/master/sub/proxies.txt',
+    'https://raw.githubusercontent.com/zieng2/wl/refs/heads/main/vless_universal.txt',
+    'https://raw.githubusercontent.com/Ashkan-m/v2ray/main/Sub.txt',
+    'https://raw.githubusercontent.com/masir-sefid/Sub/main/@Masir_Sefid.txt',
+    'https://raw.githubusercontent.com/arshiacomplus/v2rayExtractor/refs/heads/main/mix/sub.html',
+    'https://raw.githubusercontent.com/therealaleph/Iran-configs/refs/heads/main/ir_configs.txt',
+    'https://t.me/s/PrivateVPNs',
+    'https://t.me/s/DirectVPN',
+    'https://t.me/s/persianvpnhub',
+    'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/psiphon.txt',
+    'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/singbox_configs_secure.json',
+    'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/xray_loadbalanced_config.json',
+    'https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/xray_secure_loadbalanced_config.json',
     'https://raw.githubusercontent.com/ALIILAPRO/v2rayNG-Config/refs/heads/main/server.txt',
     'https://raw.githubusercontent.com/Epodonios/v2ray-configs/refs/heads/main/Sub1.txt',
     'https://raw.githubusercontent.com/Epodonios/v2ray-configs/refs/heads/main/Sub2.txt',
