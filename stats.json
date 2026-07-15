@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 283471,
-    "final_count": 283471,
+    "raw_count": 193386,
+    "final_count": 193386,
     "health_sample": {
       "sampled": 300,
-      "alive": 210,
-      "percent": 70.0
+      "alive": 214,
+      "percent": 71.33333333333334
     }
   },
   "reality": {
-    "raw_count": 110518,
-    "final_count": 110518,
+    "raw_count": 89659,
+    "final_count": 89659,
     "health_sample": {
       "sampled": 300,
-      "alive": 118,
-      "percent": 39.33333333333333
+      "alive": 148,
+      "percent": 49.333333333333336
     }
   },
   "vmess": {
-    "raw_count": 30328,
-    "final_count": 30328,
+    "raw_count": 22702,
+    "final_count": 22702,
     "health_sample": {
       "sampled": 300,
-      "alive": 65,
-      "percent": 21.666666666666668
+      "alive": 89,
+      "percent": 29.666666666666668
     }
   },
   "trojan": {
-    "raw_count": 45099,
-    "final_count": 45099,
+    "raw_count": 36267,
+    "final_count": 36267,
     "health_sample": {
       "sampled": 300,
-      "alive": 197,
-      "percent": 65.66666666666666
+      "alive": 230,
+      "percent": 76.66666666666667
     }
   },
   "hysteria2": {
-    "raw_count": 2061,
-    "final_count": 2061,
+    "raw_count": 2065,
+    "final_count": 2065,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,26 +45,26 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 171033,
-    "final_count": 171033,
+    "raw_count": 44134,
+    "final_count": 44134,
     "health_sample": {
       "sampled": 300,
-      "alive": 10,
-      "percent": 3.3333333333333335
+      "alive": 50,
+      "percent": 16.666666666666664
     }
   },
   "socks": {
-    "raw_count": 3698,
-    "final_count": 3698,
+    "raw_count": 13204,
+    "final_count": 13204,
     "health_sample": {
       "sampled": 300,
-      "alive": 140,
-      "percent": 46.666666666666664
+      "alive": 156,
+      "percent": 52.0
     }
   },
   "wireguard": {
-    "raw_count": 23,
-    "final_count": 23,
+    "raw_count": 19,
+    "final_count": 19,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -72,11 +72,11 @@
     }
   },
   "summary": {
-    "total_configs": 646231,
+    "total_configs": 401436,
     "total_sources": 370,
-    "execution_time_sec": 591.849883548,
-    "timestamp": "2026-07-15 07:59:52 UTC",
-    "successful_sources": 318,
-    "failed_sources": 48
+    "execution_time_sec": 608.719123434,
+    "timestamp": "2026-07-15 13:21:22 UTC",
+    "successful_sources": 316,
+    "failed_sources": 50
   }
 }
