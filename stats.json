@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 274479,
-    "final_count": 274479,
+    "raw_count": 276199,
+    "final_count": 276199,
     "health_sample": {
       "sampled": 300,
-      "alive": 207,
-      "percent": 69.0
+      "alive": 202,
+      "percent": 67.33333333333333
     }
   },
   "reality": {
-    "raw_count": 108501,
-    "final_count": 108501,
+    "raw_count": 107482,
+    "final_count": 107482,
     "health_sample": {
       "sampled": 300,
-      "alive": 126,
-      "percent": 42.0
+      "alive": 114,
+      "percent": 38.0
     }
   },
   "vmess": {
-    "raw_count": 30300,
-    "final_count": 30300,
+    "raw_count": 30199,
+    "final_count": 30199,
     "health_sample": {
       "sampled": 300,
-      "alive": 58,
-      "percent": 19.333333333333332
+      "alive": 68,
+      "percent": 22.666666666666664
     }
   },
   "trojan": {
-    "raw_count": 44983,
-    "final_count": 44983,
+    "raw_count": 43968,
+    "final_count": 43968,
     "health_sample": {
       "sampled": 300,
-      "alive": 184,
-      "percent": 61.33333333333333
+      "alive": 202,
+      "percent": 67.33333333333333
     }
   },
   "hysteria2": {
-    "raw_count": 2251,
-    "final_count": 2251,
+    "raw_count": 2079,
+    "final_count": 2079,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,8 +45,8 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 171892,
-    "final_count": 171892,
+    "raw_count": 171088,
+    "final_count": 171088,
     "health_sample": {
       "sampled": 300,
       "alive": 27,
@@ -54,12 +54,12 @@
     }
   },
   "socks": {
-    "raw_count": 13130,
-    "final_count": 13130,
+    "raw_count": 14709,
+    "final_count": 14709,
     "health_sample": {
       "sampled": 300,
-      "alive": 112,
-      "percent": 37.333333333333336
+      "alive": 135,
+      "percent": 45.0
     }
   },
   "wireguard": {
@@ -72,10 +72,10 @@
     }
   },
   "summary": {
-    "total_configs": 645559,
+    "total_configs": 645747,
     "total_sources": 370,
-    "execution_time_sec": 597.768075889,
-    "timestamp": "2026-07-14 19:11:42 UTC",
+    "execution_time_sec": 578.986866472,
+    "timestamp": "2026-07-15 01:31:20 UTC",
     "successful_sources": 318,
     "failed_sources": 48
   }
