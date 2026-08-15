@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 190540,
-    "final_count": 190540,
+    "raw_count": 192851,
+    "final_count": 192851,
     "health_sample": {
       "sampled": 300,
-      "alive": 193,
-      "percent": 64.33333333333333
+      "alive": 194,
+      "percent": 64.66666666666666
     }
   },
   "reality": {
-    "raw_count": 101192,
-    "final_count": 101192,
+    "raw_count": 102417,
+    "final_count": 102417,
     "health_sample": {
       "sampled": 300,
-      "alive": 95,
-      "percent": 31.666666666666664
+      "alive": 109,
+      "percent": 36.333333333333336
     }
   },
   "vmess": {
-    "raw_count": 37479,
-    "final_count": 37479,
+    "raw_count": 37556,
+    "final_count": 37556,
     "health_sample": {
       "sampled": 300,
-      "alive": 64,
-      "percent": 21.333333333333336
+      "alive": 66,
+      "percent": 22.0
     }
   },
   "trojan": {
-    "raw_count": 37982,
-    "final_count": 37982,
+    "raw_count": 37359,
+    "final_count": 37359,
     "health_sample": {
       "sampled": 300,
-      "alive": 203,
-      "percent": 67.66666666666666
+      "alive": 190,
+      "percent": 63.33333333333333
     }
   },
   "hysteria2": {
-    "raw_count": 3320,
-    "final_count": 3320,
+    "raw_count": 3331,
+    "final_count": 3331,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,21 +45,21 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 55918,
-    "final_count": 55918,
+    "raw_count": 57256,
+    "final_count": 57256,
     "health_sample": {
       "sampled": 300,
-      "alive": 50,
-      "percent": 16.666666666666664
+      "alive": 44,
+      "percent": 14.666666666666666
     }
   },
   "socks": {
-    "raw_count": 1036,
-    "final_count": 1036,
+    "raw_count": 1353,
+    "final_count": 1353,
     "health_sample": {
       "sampled": 300,
-      "alive": 101,
-      "percent": 33.666666666666664
+      "alive": 157,
+      "percent": 52.33333333333333
     }
   },
   "wireguard": {
@@ -72,10 +72,10 @@
     }
   },
   "summary": {
-    "total_configs": 427486,
+    "total_configs": 432142,
     "total_sources": 370,
-    "execution_time_sec": 733.5140455420001,
-    "timestamp": "2026-08-15 00:50:04 UTC",
+    "execution_time_sec": 696.225448892,
+    "timestamp": "2026-08-15 06:31:27 UTC",
     "successful_sources": 310,
     "failed_sources": 56
   }
