@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 186640,
-    "final_count": 186640,
+    "raw_count": 186289,
+    "final_count": 186289,
     "health_sample": {
       "sampled": 300,
-      "alive": 191,
-      "percent": 63.66666666666667
+      "alive": 201,
+      "percent": 67.0
     }
   },
   "reality": {
-    "raw_count": 112193,
-    "final_count": 112193,
+    "raw_count": 112478,
+    "final_count": 112478,
     "health_sample": {
       "sampled": 300,
-      "alive": 113,
-      "percent": 37.666666666666664
+      "alive": 100,
+      "percent": 33.33333333333333
     }
   },
   "vmess": {
-    "raw_count": 29910,
-    "final_count": 29910,
+    "raw_count": 29901,
+    "final_count": 29901,
     "health_sample": {
       "sampled": 300,
-      "alive": 62,
-      "percent": 20.666666666666668
+      "alive": 55,
+      "percent": 18.333333333333332
     }
   },
   "trojan": {
-    "raw_count": 30049,
-    "final_count": 30049,
+    "raw_count": 31788,
+    "final_count": 31788,
     "health_sample": {
       "sampled": 300,
-      "alive": 161,
-      "percent": 53.666666666666664
+      "alive": 168,
+      "percent": 56.00000000000001
     }
   },
   "hysteria2": {
-    "raw_count": 4252,
-    "final_count": 4252,
+    "raw_count": 4009,
+    "final_count": 4009,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,21 +45,21 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 53754,
-    "final_count": 53754,
+    "raw_count": 53462,
+    "final_count": 53462,
     "health_sample": {
       "sampled": 300,
-      "alive": 50,
-      "percent": 16.666666666666664
+      "alive": 46,
+      "percent": 15.333333333333332
     }
   },
   "socks": {
-    "raw_count": 5427,
-    "final_count": 5427,
+    "raw_count": 1627,
+    "final_count": 1627,
     "health_sample": {
       "sampled": 300,
-      "alive": 124,
-      "percent": 41.333333333333336
+      "alive": 116,
+      "percent": 38.666666666666664
     }
   },
   "wireguard": {
@@ -72,11 +72,11 @@
     }
   },
   "summary": {
-    "total_configs": 422244,
+    "total_configs": 419573,
     "total_sources": 370,
-    "execution_time_sec": 747.301902893,
-    "timestamp": "2026-08-29 16:14:59 UTC",
-    "successful_sources": 308,
-    "failed_sources": 58
+    "execution_time_sec": 728.249709192,
+    "timestamp": "2026-08-29 20:21:21 UTC",
+    "successful_sources": 307,
+    "failed_sources": 59
   }
 }
