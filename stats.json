@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 182966,
-    "final_count": 182966,
+    "raw_count": 186825,
+    "final_count": 186825,
     "health_sample": {
       "sampled": 300,
-      "alive": 180,
-      "percent": 60.0
+      "alive": 191,
+      "percent": 63.66666666666667
     }
   },
   "reality": {
-    "raw_count": 103065,
-    "final_count": 103065,
+    "raw_count": 105727,
+    "final_count": 105727,
     "health_sample": {
       "sampled": 300,
-      "alive": 106,
-      "percent": 35.333333333333336
+      "alive": 91,
+      "percent": 30.333333333333336
     }
   },
   "vmess": {
-    "raw_count": 33264,
-    "final_count": 33264,
+    "raw_count": 34201,
+    "final_count": 34201,
     "health_sample": {
       "sampled": 300,
-      "alive": 55,
-      "percent": 18.333333333333332
+      "alive": 65,
+      "percent": 21.666666666666668
     }
   },
   "trojan": {
-    "raw_count": 31443,
-    "final_count": 31443,
+    "raw_count": 32248,
+    "final_count": 32248,
     "health_sample": {
       "sampled": 300,
-      "alive": 197,
-      "percent": 65.66666666666666
+      "alive": 175,
+      "percent": 58.333333333333336
     }
   },
   "hysteria2": {
-    "raw_count": 2462,
-    "final_count": 2462,
+    "raw_count": 3063,
+    "final_count": 3063,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,21 +45,21 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 53531,
-    "final_count": 53531,
+    "raw_count": 55144,
+    "final_count": 55144,
     "health_sample": {
       "sampled": 300,
-      "alive": 37,
-      "percent": 12.333333333333334
+      "alive": 47,
+      "percent": 15.666666666666668
     }
   },
   "socks": {
-    "raw_count": 5747,
-    "final_count": 5747,
+    "raw_count": 8201,
+    "final_count": 8201,
     "health_sample": {
       "sampled": 300,
-      "alive": 101,
-      "percent": 33.666666666666664
+      "alive": 94,
+      "percent": 31.333333333333336
     }
   },
   "wireguard": {
@@ -72,10 +72,10 @@
     }
   },
   "summary": {
-    "total_configs": 412497,
+    "total_configs": 425428,
     "total_sources": 370,
-    "execution_time_sec": 737.644071892,
-    "timestamp": "2026-09-21 21:35:21 UTC",
+    "execution_time_sec": 758.662557659,
+    "timestamp": "2026-09-22 02:34:42 UTC",
     "successful_sources": 303,
     "failed_sources": 63
   }
