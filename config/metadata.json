@@ -1,26 +1,34 @@
 {
-  "last_update": "2026-10-03T15:38:26.350959+00:00",
+  "last_update": "2026-10-03T20:33:19.599039+00:00",
   "protocols": {
     "hysteria2": {
       "files": [
         {
-          "name": "hysteria2.txt",
-          "path": "config/hysteria2/hysteria2.txt",
-          "size_bytes": 646840,
+          "name": "hysteria2_2.txt",
+          "path": "config/hysteria2/hysteria2_2.txt",
+          "size_bytes": 576420,
+          "config_count": 1,
+          "parts": 2,
+          "protocol": "hysteria2"
+        },
+        {
+          "name": "hysteria2_1.txt",
+          "path": "config/hysteria2/hysteria2_1.txt",
+          "size_bytes": 729268,
           "config_count": 1,
           "parts": 1,
           "protocol": "hysteria2"
         }
       ],
-      "total_configs": 1,
-      "total_size_bytes": 646840
+      "total_configs": 2,
+      "total_size_bytes": 1305688
     },
     "reality": {
       "files": [
         {
           "name": "reality_1.txt",
           "path": "config/reality/reality_1.txt",
-          "size_bytes": 1631892,
+          "size_bytes": 1634720,
           "config_count": 1,
           "parts": 1,
           "protocol": "reality"
@@ -28,7 +36,7 @@
         {
           "name": "reality_10.txt",
           "path": "config/reality/reality_10.txt",
-          "size_bytes": 1597908,
+          "size_bytes": 1648400,
           "config_count": 1,
           "parts": 10,
           "protocol": "reality"
@@ -36,7 +44,7 @@
         {
           "name": "reality_22.txt",
           "path": "config/reality/reality_22.txt",
-          "size_bytes": 1581336,
+          "size_bytes": 1649904,
           "config_count": 1,
           "parts": 22,
           "protocol": "reality"
@@ -44,7 +52,7 @@
         {
           "name": "reality_14.txt",
           "path": "config/reality/reality_14.txt",
-          "size_bytes": 1575524,
+          "size_bytes": 1638104,
           "config_count": 1,
           "parts": 14,
           "protocol": "reality"
@@ -52,7 +60,7 @@
         {
           "name": "reality_6.txt",
           "path": "config/reality/reality_6.txt",
-          "size_bytes": 1548684,
+          "size_bytes": 1533808,
           "config_count": 1,
           "parts": 6,
           "protocol": "reality"
@@ -60,23 +68,15 @@
         {
           "name": "reality_17.txt",
           "path": "config/reality/reality_17.txt",
-          "size_bytes": 1615732,
+          "size_bytes": 1608948,
           "config_count": 1,
           "parts": 17,
           "protocol": "reality"
         },
         {
-          "name": "reality_26.txt",
-          "path": "config/reality/reality_26.txt",
-          "size_bytes": 774600,
-          "config_count": 1,
-          "parts": 26,
-          "protocol": "reality"
-        },
-        {
           "name": "reality_7.txt",
           "path": "config/reality/reality_7.txt",
-          "size_bytes": 1545864,
+          "size_bytes": 1550720,
           "config_count": 1,
           "parts": 7,
           "protocol": "reality"
@@ -84,7 +84,7 @@
         {
           "name": "reality_8.txt",
           "path": "config/reality/reality_8.txt",
-          "size_bytes": 1537228,
+          "size_bytes": 1519452,
           "config_count": 1,
           "parts": 8,
           "protocol": "reality"
@@ -92,7 +92,7 @@
         {
           "name": "reality_11.txt",
           "path": "config/reality/reality_11.txt",
-          "size_bytes": 1613624,
+          "size_bytes": 1611488,
           "config_count": 1,
           "parts": 11,
           "protocol": "reality"
@@ -100,7 +100,7 @@
         {
           "name": "reality_15.txt",
           "path": "config/reality/reality_15.txt",
-          "size_bytes": 1674948,
+          "size_bytes": 1660684,
           "config_count": 1,
           "parts": 15,
           "protocol": "reality"
@@ -108,7 +108,7 @@
         {
           "name": "reality_24.txt",
           "path": "config/reality/reality_24.txt",
-          "size_bytes": 1710712,
+          "size_bytes": 1672136,
           "config_count": 1,
           "parts": 24,
           "protocol": "reality"
@@ -116,7 +116,7 @@
         {
           "name": "reality_23.txt",
           "path": "config/reality/reality_23.txt",
-          "size_bytes": 1728960,
+          "size_bytes": 1709548,
           "config_count": 1,
           "parts": 23,
           "protocol": "reality"
@@ -124,7 +124,7 @@
         {
           "name": "reality_19.txt",
           "path": "config/reality/reality_19.txt",
-          "size_bytes": 1653420,
+          "size_bytes": 1678776,
           "config_count": 1,
           "parts": 19,
           "protocol": "reality"
@@ -132,7 +132,7 @@
         {
           "name": "reality_9.txt",
           "path": "config/reality/reality_9.txt",
-          "size_bytes": 1560396,
+          "size_bytes": 1593564,
           "config_count": 1,
           "parts": 9,
           "protocol": "reality"
@@ -140,7 +140,7 @@
         {
           "name": "reality_5.txt",
           "path": "config/reality/reality_5.txt",
-          "size_bytes": 1608196,
+          "size_bytes": 1611936,
           "config_count": 1,
           "parts": 5,
           "protocol": "reality"
@@ -148,7 +148,7 @@
         {
           "name": "reality_21.txt",
           "path": "config/reality/reality_21.txt",
-          "size_bytes": 1609252,
+          "size_bytes": 1601292,
           "config_count": 1,
           "parts": 21,
           "protocol": "reality"
@@ -156,7 +156,7 @@
         {
           "name": "reality_4.txt",
           "path": "config/reality/reality_4.txt",
-          "size_bytes": 1776188,
+          "size_bytes": 1765436,
           "config_count": 1,
           "parts": 4,
           "protocol": "reality"
@@ -164,7 +164,7 @@
         {
           "name": "reality_2.txt",
           "path": "config/reality/reality_2.txt",
-          "size_bytes": 1709312,
+          "size_bytes": 1704084,
           "config_count": 1,
           "parts": 2,
           "protocol": "reality"
@@ -172,7 +172,7 @@
         {
           "name": "reality_16.txt",
           "path": "config/reality/reality_16.txt",
-          "size_bytes": 1599072,
+          "size_bytes": 1583752,
           "config_count": 1,
           "parts": 16,
           "protocol": "reality"
@@ -180,7 +180,7 @@
         {
           "name": "reality_3.txt",
           "path": "config/reality/reality_3.txt",
-          "size_bytes": 1578416,
+          "size_bytes": 1598012,
           "config_count": 1,
           "parts": 3,
           "protocol": "reality"
@@ -188,7 +188,7 @@
         {
           "name": "reality_25.txt",
           "path": "config/reality/reality_25.txt",
-          "size_bytes": 1626692,
+          "size_bytes": 1340948,
           "config_count": 1,
           "parts": 25,
           "protocol": "reality"
@@ -196,7 +196,7 @@
         {
           "name": "reality_12.txt",
           "path": "config/reality/reality_12.txt",
-          "size_bytes": 1678284,
+          "size_bytes": 1665380,
           "config_count": 1,
           "parts": 12,
           "protocol": "reality"
@@ -204,7 +204,7 @@
         {
           "name": "reality_13.txt",
           "path": "config/reality/reality_13.txt",
-          "size_bytes": 1626064,
+          "size_bytes": 1575660,
           "config_count": 1,
           "parts": 13,
           "protocol": "reality"
@@ -212,7 +212,7 @@
         {
           "name": "reality_18.txt",
           "path": "config/reality/reality_18.txt",
-          "size_bytes": 1581036,
+          "size_bytes": 1617280,
           "config_count": 1,
           "parts": 18,
           "protocol": "reality"
@@ -220,51 +220,35 @@
         {
           "name": "reality_20.txt",
           "path": "config/reality/reality_20.txt",
-          "size_bytes": 1679884,
+          "size_bytes": 1634316,
           "config_count": 1,
           "parts": 20,
           "protocol": "reality"
         }
       ],
-      "total_configs": 26,
-      "total_size_bytes": 41423224
+      "total_configs": 25,
+      "total_size_bytes": 40408348
     },
     "socks": {
       "files": [
         {
-          "name": "socks_1.txt",
-          "path": "config/socks/socks_1.txt",
-          "size_bytes": 151748,
+          "name": "socks.txt",
+          "path": "config/socks/socks.txt",
+          "size_bytes": 111236,
           "config_count": 1,
           "parts": 1,
           "protocol": "socks"
-        },
-        {
-          "name": "socks_3.txt",
-          "path": "config/socks/socks_3.txt",
-          "size_bytes": 88144,
-          "config_count": 1,
-          "parts": 3,
-          "protocol": "socks"
-        },
-        {
-          "name": "socks_2.txt",
-          "path": "config/socks/socks_2.txt",
-          "size_bytes": 140768,
-          "config_count": 1,
-          "parts": 2,
-          "protocol": "socks"
         }
       ],
-      "total_configs": 3,
-      "total_size_bytes": 380660
+      "total_configs": 1,
+      "total_size_bytes": 111236
     },
     "ss": {
       "files": [
         {
           "name": "ss_12.txt",
           "path": "config/ss/ss_12.txt",
-          "size_bytes": 1532612,
+          "size_bytes": 1456776,
           "config_count": 1,
           "parts": 12,
           "protocol": "ss"
@@ -272,7 +256,7 @@
         {
           "name": "ss_8.txt",
           "path": "config/ss/ss_8.txt",
-          "size_bytes": 705188,
+          "size_bytes": 713536,
           "config_count": 1,
           "parts": 8,
           "protocol": "ss"
@@ -280,7 +264,7 @@
         {
           "name": "ss_11.txt",
           "path": "config/ss/ss_11.txt",
-          "size_bytes": 804792,
+          "size_bytes": 927500,
           "config_count": 1,
           "parts": 11,
           "protocol": "ss"
@@ -288,7 +272,7 @@
         {
           "name": "ss_6.txt",
           "path": "config/ss/ss_6.txt",
-          "size_bytes": 778904,
+          "size_bytes": 773824,
           "config_count": 1,
           "parts": 6,
           "protocol": "ss"
@@ -296,7 +280,7 @@
         {
           "name": "ss_2.txt",
           "path": "config/ss/ss_2.txt",
-          "size_bytes": 1696604,
+          "size_bytes": 1699760,
           "config_count": 1,
           "parts": 2,
           "protocol": "ss"
@@ -304,7 +288,7 @@
         {
           "name": "ss_3.txt",
           "path": "config/ss/ss_3.txt",
-          "size_bytes": 1486928,
+          "size_bytes": 1488788,
           "config_count": 1,
           "parts": 3,
           "protocol": "ss"
@@ -312,7 +296,7 @@
         {
           "name": "ss_13.txt",
           "path": "config/ss/ss_13.txt",
-          "size_bytes": 1708624,
+          "size_bytes": 1562988,
           "config_count": 1,
           "parts": 13,
           "protocol": "ss"
@@ -320,7 +304,7 @@
         {
           "name": "ss_5.txt",
           "path": "config/ss/ss_5.txt",
-          "size_bytes": 788244,
+          "size_bytes": 794008,
           "config_count": 1,
           "parts": 5,
           "protocol": "ss"
@@ -328,7 +312,7 @@
         {
           "name": "ss_10.txt",
           "path": "config/ss/ss_10.txt",
-          "size_bytes": 673620,
+          "size_bytes": 676428,
           "config_count": 1,
           "parts": 10,
           "protocol": "ss"
@@ -336,7 +320,7 @@
         {
           "name": "ss_1.txt",
           "path": "config/ss/ss_1.txt",
-          "size_bytes": 1313496,
+          "size_bytes": 1321728,
           "config_count": 1,
           "parts": 1,
           "protocol": "ss"
@@ -344,7 +328,7 @@
         {
           "name": "ss_7.txt",
           "path": "config/ss/ss_7.txt",
-          "size_bytes": 762836,
+          "size_bytes": 765280,
           "config_count": 1,
           "parts": 7,
           "protocol": "ss"
@@ -352,7 +336,7 @@
         {
           "name": "ss_4.txt",
           "path": "config/ss/ss_4.txt",
-          "size_bytes": 910244,
+          "size_bytes": 891264,
           "config_count": 1,
           "parts": 4,
           "protocol": "ss"
@@ -360,21 +344,21 @@
         {
           "name": "ss_9.txt",
           "path": "config/ss/ss_9.txt",
-          "size_bytes": 670360,
+          "size_bytes": 667780,
           "config_count": 1,
           "parts": 9,
           "protocol": "ss"
         }
       ],
       "total_configs": 13,
-      "total_size_bytes": 13832452
+      "total_size_bytes": 13739660
     },
     "trojan": {
       "files": [
         {
           "name": "trojan_7.txt",
           "path": "config/trojan/trojan_7.txt",
-          "size_bytes": 1118204,
+          "size_bytes": 1107124,
           "config_count": 1,
           "parts": 7,
           "protocol": "trojan"
@@ -382,7 +366,7 @@
         {
           "name": "trojan_6.txt",
           "path": "config/trojan/trojan_6.txt",
-          "size_bytes": 1100596,
+          "size_bytes": 1093084,
           "config_count": 1,
           "parts": 6,
           "protocol": "trojan"
@@ -390,7 +374,7 @@
         {
           "name": "trojan_8.txt",
           "path": "config/trojan/trojan_8.txt",
-          "size_bytes": 630448,
+          "size_bytes": 590296,
           "config_count": 1,
           "parts": 8,
           "protocol": "trojan"
@@ -398,7 +382,7 @@
         {
           "name": "trojan_2.txt",
           "path": "config/trojan/trojan_2.txt",
-          "size_bytes": 1127572,
+          "size_bytes": 1126568,
           "config_count": 1,
           "parts": 2,
           "protocol": "trojan"
@@ -406,7 +390,7 @@
         {
           "name": "trojan_3.txt",
           "path": "config/trojan/trojan_3.txt",
-          "size_bytes": 1159668,
+          "size_bytes": 1167284,
           "config_count": 1,
           "parts": 3,
           "protocol": "trojan"
@@ -414,7 +398,7 @@
         {
           "name": "trojan_4.txt",
           "path": "config/trojan/trojan_4.txt",
-          "size_bytes": 1077020,
+          "size_bytes": 1062952,
           "config_count": 1,
           "parts": 4,
           "protocol": "trojan"
@@ -422,7 +406,7 @@
         {
           "name": "trojan_5.txt",
           "path": "config/trojan/trojan_5.txt",
-          "size_bytes": 934008,
+          "size_bytes": 922668,
           "config_count": 1,
           "parts": 5,
           "protocol": "trojan"
@@ -430,21 +414,21 @@
         {
           "name": "trojan_1.txt",
           "path": "config/trojan/trojan_1.txt",
-          "size_bytes": 1025524,
+          "size_bytes": 1014552,
           "config_count": 1,
           "parts": 1,
           "protocol": "trojan"
         }
       ],
       "total_configs": 8,
-      "total_size_bytes": 8173040
+      "total_size_bytes": 8084528
     },
     "vless": {
       "files": [
         {
           "name": "vless_46.txt",
           "path": "config/vless/vless_46.txt",
-          "size_bytes": 1412636,
+          "size_bytes": 1665188,
           "config_count": 1,
           "parts": 46,
           "protocol": "vless"
@@ -452,7 +436,7 @@
         {
           "name": "vless_12.txt",
           "path": "config/vless/vless_12.txt",
-          "size_bytes": 1313172,
+          "size_bytes": 1169944,
           "config_count": 1,
           "parts": 12,
           "protocol": "vless"
@@ -460,7 +444,7 @@
         {
           "name": "vless_4.txt",
           "path": "config/vless/vless_4.txt",
-          "size_bytes": 1315320,
+          "size_bytes": 1325720,
           "config_count": 1,
           "parts": 4,
           "protocol": "vless"
@@ -468,7 +452,7 @@
         {
           "name": "vless_2.txt",
           "path": "config/vless/vless_2.txt",
-          "size_bytes": 1168524,
+          "size_bytes": 1165960,
           "config_count": 1,
           "parts": 2,
           "protocol": "vless"
@@ -476,7 +460,7 @@
         {
           "name": "vless_21.txt",
           "path": "config/vless/vless_21.txt",
-          "size_bytes": 1253064,
+          "size_bytes": 1244248,
           "config_count": 1,
           "parts": 21,
           "protocol": "vless"
@@ -484,7 +468,7 @@
         {
           "name": "vless_1.txt",
           "path": "config/vless/vless_1.txt",
-          "size_bytes": 1312220,
+          "size_bytes": 1308708,
           "config_count": 1,
           "parts": 1,
           "protocol": "vless"
@@ -492,7 +476,7 @@
         {
           "name": "vless_18.txt",
           "path": "config/vless/vless_18.txt",
-          "size_bytes": 1356340,
+          "size_bytes": 1321692,
           "config_count": 1,
           "parts": 18,
           "protocol": "vless"
@@ -500,7 +484,7 @@
         {
           "name": "vless_29.txt",
           "path": "config/vless/vless_29.txt",
-          "size_bytes": 1532968,
+          "size_bytes": 1366452,
           "config_count": 1,
           "parts": 29,
           "protocol": "vless"
@@ -508,7 +492,7 @@
         {
           "name": "vless_3.txt",
           "path": "config/vless/vless_3.txt",
-          "size_bytes": 1258240,
+          "size_bytes": 1262924,
           "config_count": 1,
           "parts": 3,
           "protocol": "vless"
@@ -516,7 +500,7 @@
         {
           "name": "vless_44.txt",
           "path": "config/vless/vless_44.txt",
-          "size_bytes": 1241672,
+          "size_bytes": 1236516,
           "config_count": 1,
           "parts": 44,
           "protocol": "vless"
@@ -524,7 +508,7 @@
         {
           "name": "vless_27.txt",
           "path": "config/vless/vless_27.txt",
-          "size_bytes": 1366224,
+          "size_bytes": 1503828,
           "config_count": 1,
           "parts": 27,
           "protocol": "vless"
@@ -532,7 +516,7 @@
         {
           "name": "vless_5.txt",
           "path": "config/vless/vless_5.txt",
-          "size_bytes": 1285348,
+          "size_bytes": 1263944,
           "config_count": 1,
           "parts": 5,
           "protocol": "vless"
@@ -540,7 +524,7 @@
         {
           "name": "vless_40.txt",
           "path": "config/vless/vless_40.txt",
-          "size_bytes": 1053804,
+          "size_bytes": 1103024,
           "config_count": 1,
           "parts": 40,
           "protocol": "vless"
@@ -548,7 +532,7 @@
         {
           "name": "vless_22.txt",
           "path": "config/vless/vless_22.txt",
-          "size_bytes": 1328660,
+          "size_bytes": 1314516,
           "config_count": 1,
           "parts": 22,
           "protocol": "vless"
@@ -556,7 +540,7 @@
         {
           "name": "vless_41.txt",
           "path": "config/vless/vless_41.txt",
-          "size_bytes": 1010820,
+          "size_bytes": 1071812,
           "config_count": 1,
           "parts": 41,
           "protocol": "vless"
@@ -564,7 +548,7 @@
         {
           "name": "vless_32.txt",
           "path": "config/vless/vless_32.txt",
-          "size_bytes": 1323208,
+          "size_bytes": 1265936,
           "config_count": 1,
           "parts": 32,
           "protocol": "vless"
@@ -572,7 +556,7 @@
         {
           "name": "vless_42.txt",
           "path": "config/vless/vless_42.txt",
-          "size_bytes": 1198296,
+          "size_bytes": 1277608,
           "config_count": 1,
           "parts": 42,
           "protocol": "vless"
@@ -580,7 +564,7 @@
         {
           "name": "vless_16.txt",
           "path": "config/vless/vless_16.txt",
-          "size_bytes": 1274900,
+          "size_bytes": 1267080,
           "config_count": 1,
           "parts": 16,
           "protocol": "vless"
@@ -588,7 +572,7 @@
         {
           "name": "vless_24.txt",
           "path": "config/vless/vless_24.txt",
-          "size_bytes": 1086204,
+          "size_bytes": 1231360,
           "config_count": 1,
           "parts": 24,
           "protocol": "vless"
@@ -596,7 +580,7 @@
         {
           "name": "vless_13.txt",
           "path": "config/vless/vless_13.txt",
-          "size_bytes": 1382584,
+          "size_bytes": 1370720,
           "config_count": 1,
           "parts": 13,
           "protocol": "vless"
@@ -604,7 +588,7 @@
         {
           "name": "vless_37.txt",
           "path": "config/vless/vless_37.txt",
-          "size_bytes": 1218380,
+          "size_bytes": 1267380,
           "config_count": 1,
           "parts": 37,
           "protocol": "vless"
@@ -612,7 +596,7 @@
         {
           "name": "vless_14.txt",
           "path": "config/vless/vless_14.txt",
-          "size_bytes": 1165272,
+          "size_bytes": 1136848,
           "config_count": 1,
           "parts": 14,
           "protocol": "vless"
@@ -620,7 +604,7 @@
         {
           "name": "vless_8.txt",
           "path": "config/vless/vless_8.txt",
-          "size_bytes": 1235052,
+          "size_bytes": 1263332,
           "config_count": 1,
           "parts": 8,
           "protocol": "vless"
@@ -628,7 +612,7 @@
         {
           "name": "vless_19.txt",
           "path": "config/vless/vless_19.txt",
-          "size_bytes": 1358316,
+          "size_bytes": 1341096,
           "config_count": 1,
           "parts": 19,
           "protocol": "vless"
@@ -636,7 +620,7 @@
         {
           "name": "vless_23.txt",
           "path": "config/vless/vless_23.txt",
-          "size_bytes": 1301920,
+          "size_bytes": 1169912,
           "config_count": 1,
           "parts": 23,
           "protocol": "vless"
@@ -644,7 +628,7 @@
         {
           "name": "vless_17.txt",
           "path": "config/vless/vless_17.txt",
-          "size_bytes": 1365752,
+          "size_bytes": 1430068,
           "config_count": 1,
           "parts": 17,
           "protocol": "vless"
@@ -652,7 +636,7 @@
         {
           "name": "vless_7.txt",
           "path": "config/vless/vless_7.txt",
-          "size_bytes": 1343940,
+          "size_bytes": 1312504,
           "config_count": 1,
           "parts": 7,
           "protocol": "vless"
@@ -660,7 +644,7 @@
         {
           "name": "vless_10.txt",
           "path": "config/vless/vless_10.txt",
-          "size_bytes": 1282876,
+          "size_bytes": 1254048,
           "config_count": 1,
           "parts": 10,
           "protocol": "vless"
@@ -668,7 +652,7 @@
         {
           "name": "vless_15.txt",
           "path": "config/vless/vless_15.txt",
-          "size_bytes": 1172436,
+          "size_bytes": 1181456,
           "config_count": 1,
           "parts": 15,
           "protocol": "vless"
@@ -676,7 +660,7 @@
         {
           "name": "vless_26.txt",
           "path": "config/vless/vless_26.txt",
-          "size_bytes": 1240736,
+          "size_bytes": 1288196,
           "config_count": 1,
           "parts": 26,
           "protocol": "vless"
@@ -684,7 +668,7 @@
         {
           "name": "vless_38.txt",
           "path": "config/vless/vless_38.txt",
-          "size_bytes": 1285576,
+          "size_bytes": 1297196,
           "config_count": 1,
           "parts": 38,
           "protocol": "vless"
@@ -692,7 +676,7 @@
         {
           "name": "vless_34.txt",
           "path": "config/vless/vless_34.txt",
-          "size_bytes": 1340252,
+          "size_bytes": 1334604,
           "config_count": 1,
           "parts": 34,
           "protocol": "vless"
@@ -700,7 +684,7 @@
         {
           "name": "vless_28.txt",
           "path": "config/vless/vless_28.txt",
-          "size_bytes": 1470476,
+          "size_bytes": 1379104,
           "config_count": 1,
           "parts": 28,
           "protocol": "vless"
@@ -708,7 +692,7 @@
         {
           "name": "vless_25.txt",
           "path": "config/vless/vless_25.txt",
-          "size_bytes": 1157440,
+          "size_bytes": 1099588,
           "config_count": 1,
           "parts": 25,
           "protocol": "vless"
@@ -716,7 +700,7 @@
         {
           "name": "vless_6.txt",
           "path": "config/vless/vless_6.txt",
-          "size_bytes": 1263536,
+          "size_bytes": 1260716,
           "config_count": 1,
           "parts": 6,
           "protocol": "vless"
@@ -724,7 +708,7 @@
         {
           "name": "vless_45.txt",
           "path": "config/vless/vless_45.txt",
-          "size_bytes": 1227992,
+          "size_bytes": 1131456,
           "config_count": 1,
           "parts": 45,
           "protocol": "vless"
@@ -732,7 +716,7 @@
         {
           "name": "vless_36.txt",
           "path": "config/vless/vless_36.txt",
-          "size_bytes": 1233312,
+          "size_bytes": 1235092,
           "config_count": 1,
           "parts": 36,
           "protocol": "vless"
@@ -740,7 +724,7 @@
         {
           "name": "vless_9.txt",
           "path": "config/vless/vless_9.txt",
-          "size_bytes": 1265944,
+          "size_bytes": 1248208,
           "config_count": 1,
           "parts": 9,
           "protocol": "vless"
@@ -748,7 +732,7 @@
         {
           "name": "vless_33.txt",
           "path": "config/vless/vless_33.txt",
-          "size_bytes": 1146104,
+          "size_bytes": 1225656,
           "config_count": 1,
           "parts": 33,
           "protocol": "vless"
@@ -756,7 +740,7 @@
         {
           "name": "vless_20.txt",
           "path": "config/vless/vless_20.txt",
-          "size_bytes": 1302236,
+          "size_bytes": 1313956,
           "config_count": 1,
           "parts": 20,
           "protocol": "vless"
@@ -764,7 +748,7 @@
         {
           "name": "vless_31.txt",
           "path": "config/vless/vless_31.txt",
-          "size_bytes": 1320580,
+          "size_bytes": 1356876,
           "config_count": 1,
           "parts": 31,
           "protocol": "vless"
@@ -772,7 +756,7 @@
         {
           "name": "vless_43.txt",
           "path": "config/vless/vless_43.txt",
-          "size_bytes": 1217348,
+          "size_bytes": 1183344,
           "config_count": 1,
           "parts": 43,
           "protocol": "vless"
@@ -780,7 +764,7 @@
         {
           "name": "vless_30.txt",
           "path": "config/vless/vless_30.txt",
-          "size_bytes": 1090380,
+          "size_bytes": 1137260,
           "config_count": 1,
           "parts": 30,
           "protocol": "vless"
@@ -788,7 +772,7 @@
         {
           "name": "vless_39.txt",
           "path": "config/vless/vless_39.txt",
-          "size_bytes": 1221332,
+          "size_bytes": 995544,
           "config_count": 1,
           "parts": 39,
           "protocol": "vless"
@@ -796,7 +780,7 @@
         {
           "name": "vless_11.txt",
           "path": "config/vless/vless_11.txt",
-          "size_bytes": 1141848,
+          "size_bytes": 1319980,
           "config_count": 1,
           "parts": 11,
           "protocol": "vless"
@@ -804,29 +788,21 @@
         {
           "name": "vless_35.txt",
           "path": "config/vless/vless_35.txt",
-          "size_bytes": 1333460,
+          "size_bytes": 1270496,
           "config_count": 1,
           "parts": 35,
           "protocol": "vless"
-        },
-        {
-          "name": "vless_47.txt",
-          "path": "config/vless/vless_47.txt",
-          "size_bytes": 1082780,
-          "config_count": 1,
-          "parts": 47,
-          "protocol": "vless"
         }
       ],
-      "total_configs": 47,
-      "total_size_bytes": 59259480
+      "total_configs": 46,
+      "total_size_bytes": 58171096
     },
     "vmess": {
       "files": [
         {
           "name": "vmess_5.txt",
           "path": "config/vmess/vmess_5.txt",
-          "size_bytes": 2155044,
+          "size_bytes": 2140136,
           "config_count": 1,
           "parts": 5,
           "protocol": "vmess"
@@ -834,7 +810,7 @@
         {
           "name": "vmess_6.txt",
           "path": "config/vmess/vmess_6.txt",
-          "size_bytes": 2170476,
+          "size_bytes": 2185764,
           "config_count": 1,
           "parts": 6,
           "protocol": "vmess"
@@ -842,7 +818,7 @@
         {
           "name": "vmess_3.txt",
           "path": "config/vmess/vmess_3.txt",
-          "size_bytes": 1919604,
+          "size_bytes": 1921556,
           "config_count": 1,
           "parts": 3,
           "protocol": "vmess"
@@ -850,7 +826,7 @@
         {
           "name": "vmess_7.txt",
           "path": "config/vmess/vmess_7.txt",
-          "size_bytes": 1955828,
+          "size_bytes": 1968276,
           "config_count": 1,
           "parts": 7,
           "protocol": "vmess"
@@ -858,7 +834,7 @@
         {
           "name": "vmess_8.txt",
           "path": "config/vmess/vmess_8.txt",
-          "size_bytes": 2031108,
+          "size_bytes": 2016524,
           "config_count": 1,
           "parts": 8,
           "protocol": "vmess"
@@ -866,7 +842,7 @@
         {
           "name": "vmess_2.txt",
           "path": "config/vmess/vmess_2.txt",
-          "size_bytes": 2105756,
+          "size_bytes": 2102496,
           "config_count": 1,
           "parts": 2,
           "protocol": "vmess"
@@ -874,7 +850,7 @@
         {
           "name": "vmess_4.txt",
           "path": "config/vmess/vmess_4.txt",
-          "size_bytes": 2060816,
+          "size_bytes": 2060056,
           "config_count": 1,
           "parts": 4,
           "protocol": "vmess"
@@ -882,7 +858,7 @@
         {
           "name": "vmess_9.txt",
           "path": "config/vmess/vmess_9.txt",
-          "size_bytes": 1676336,
+          "size_bytes": 1831408,
           "config_count": 1,
           "parts": 9,
           "protocol": "vmess"
@@ -890,14 +866,14 @@
         {
           "name": "vmess_1.txt",
           "path": "config/vmess/vmess_1.txt",
-          "size_bytes": 2656220,
+          "size_bytes": 2658140,
           "config_count": 1,
           "parts": 1,
           "protocol": "vmess"
         }
       ],
       "total_configs": 9,
-      "total_size_bytes": 18731188
+      "total_size_bytes": 18884356
     },
     "wireguard": {
       "files": [
@@ -915,8 +891,8 @@
     }
   },
   "summary": {
-    "total_configs": 108,
-    "total_files": 108,
-    "total_size_bytes": 142453316
+    "total_configs": 105,
+    "total_files": 105,
+    "total_size_bytes": 140711344
   }
 }
