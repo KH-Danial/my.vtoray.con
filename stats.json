@@ -1,7 +1,7 @@
 {
   "vless": {
-    "raw_count": 174941,
-    "final_count": 174941,
+    "raw_count": 175544,
+    "final_count": 175544,
     "health_sample": {
       "sampled": 300,
       "alive": 191,
@@ -9,26 +9,26 @@
     }
   },
   "reality": {
-    "raw_count": 96851,
-    "final_count": 96851,
+    "raw_count": 97761,
+    "final_count": 97761,
     "health_sample": {
       "sampled": 300,
-      "alive": 100,
-      "percent": 33.33333333333333
+      "alive": 89,
+      "percent": 29.666666666666668
     }
   },
   "vmess": {
-    "raw_count": 36497,
-    "final_count": 36497,
+    "raw_count": 36664,
+    "final_count": 36664,
     "health_sample": {
       "sampled": 300,
-      "alive": 51,
-      "percent": 17.0
+      "alive": 47,
+      "percent": 15.666666666666668
     }
   },
   "trojan": {
-    "raw_count": 29889,
-    "final_count": 29889,
+    "raw_count": 30079,
+    "final_count": 30079,
     "health_sample": {
       "sampled": 300,
       "alive": 195,
@@ -36,8 +36,8 @@
     }
   },
   "hysteria2": {
-    "raw_count": 3828,
-    "final_count": 3828,
+    "raw_count": 3935,
+    "final_count": 3935,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,17 +45,17 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 49123,
-    "final_count": 49123,
+    "raw_count": 49155,
+    "final_count": 49155,
     "health_sample": {
       "sampled": 300,
-      "alive": 62,
-      "percent": 20.666666666666668
+      "alive": 51,
+      "percent": 17.0
     }
   },
   "socks": {
-    "raw_count": 10316,
-    "final_count": 10316,
+    "raw_count": 6268,
+    "final_count": 6268,
     "health_sample": {
       "sampled": 300,
       "alive": 110,
@@ -72,11 +72,11 @@
     }
   },
   "summary": {
-    "total_configs": 401464,
+    "total_configs": 399425,
     "total_sources": 370,
-    "execution_time_sec": 799.275822619,
-    "timestamp": "2026-10-11 12:00:43 UTC",
-    "successful_sources": 285,
-    "failed_sources": 81
+    "execution_time_sec": 789.588666243,
+    "timestamp": "2026-10-11 17:12:40 UTC",
+    "successful_sources": 284,
+    "failed_sources": 82
   }
 }
