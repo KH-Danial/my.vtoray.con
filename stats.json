@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 172646,
-    "final_count": 172646,
+    "raw_count": 172341,
+    "final_count": 172341,
     "health_sample": {
       "sampled": 300,
-      "alive": 194,
-      "percent": 64.66666666666666
+      "alive": 183,
+      "percent": 61.0
     }
   },
   "reality": {
-    "raw_count": 96695,
-    "final_count": 96695,
+    "raw_count": 96636,
+    "final_count": 96636,
     "health_sample": {
       "sampled": 300,
-      "alive": 102,
-      "percent": 34.0
+      "alive": 109,
+      "percent": 36.333333333333336
     }
   },
   "vmess": {
-    "raw_count": 36836,
-    "final_count": 36836,
+    "raw_count": 36775,
+    "final_count": 36775,
     "health_sample": {
       "sampled": 300,
-      "alive": 51,
-      "percent": 17.0
+      "alive": 57,
+      "percent": 19.0
     }
   },
   "trojan": {
-    "raw_count": 30802,
-    "final_count": 30802,
+    "raw_count": 30506,
+    "final_count": 30506,
     "health_sample": {
       "sampled": 300,
-      "alive": 210,
-      "percent": 70.0
+      "alive": 196,
+      "percent": 65.33333333333333
     }
   },
   "hysteria2": {
-    "raw_count": 3614,
-    "final_count": 3614,
+    "raw_count": 3460,
+    "final_count": 3460,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,21 +45,21 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 49179,
-    "final_count": 49179,
+    "raw_count": 48183,
+    "final_count": 48183,
     "health_sample": {
       "sampled": 300,
-      "alive": 53,
-      "percent": 17.666666666666668
+      "alive": 44,
+      "percent": 14.666666666666666
     }
   },
   "socks": {
-    "raw_count": 12629,
-    "final_count": 12629,
+    "raw_count": 12830,
+    "final_count": 12830,
     "health_sample": {
       "sampled": 300,
-      "alive": 93,
-      "percent": 31.0
+      "alive": 109,
+      "percent": 36.333333333333336
     }
   },
   "wireguard": {
@@ -72,10 +72,10 @@
     }
   },
   "summary": {
-    "total_configs": 402420,
+    "total_configs": 400750,
     "total_sources": 370,
-    "execution_time_sec": 705.022781157,
-    "timestamp": "2026-10-13 05:06:18 UTC",
+    "execution_time_sec": 731.9140031479999,
+    "timestamp": "2026-10-13 13:21:23 UTC",
     "successful_sources": 285,
     "failed_sources": 81
   }
