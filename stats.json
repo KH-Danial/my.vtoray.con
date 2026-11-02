@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 96805,
-    "final_count": 96805,
-    "health_sample": {
-      "sampled": 300,
-      "alive": 215,
-      "percent": 71.66666666666667
-    }
-  },
-  "reality": {
-    "raw_count": 70913,
-    "final_count": 70913,
-    "health_sample": {
-      "sampled": 300,
-      "alive": 120,
-      "percent": 40.0
-    }
-  },
-  "vmess": {
-    "raw_count": 31828,
-    "final_count": 31828,
-    "health_sample": {
-      "sampled": 300,
-      "alive": 74,
-      "percent": 24.666666666666668
-    }
-  },
-  "trojan": {
-    "raw_count": 29796,
-    "final_count": 29796,
+    "raw_count": 96062,
+    "final_count": 96062,
     "health_sample": {
       "sampled": 300,
       "alive": 203,
       "percent": 67.66666666666666
     }
   },
+  "reality": {
+    "raw_count": 70180,
+    "final_count": 70180,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 118,
+      "percent": 39.33333333333333
+    }
+  },
+  "vmess": {
+    "raw_count": 31870,
+    "final_count": 31870,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 67,
+      "percent": 22.333333333333332
+    }
+  },
+  "trojan": {
+    "raw_count": 29602,
+    "final_count": 29602,
+    "health_sample": {
+      "sampled": 300,
+      "alive": 204,
+      "percent": 68.0
+    }
+  },
   "hysteria2": {
-    "raw_count": 2542,
-    "final_count": 2542,
+    "raw_count": 2591,
+    "final_count": 2591,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,21 +45,21 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 43239,
-    "final_count": 43239,
+    "raw_count": 43329,
+    "final_count": 43329,
     "health_sample": {
       "sampled": 300,
-      "alive": 59,
-      "percent": 19.666666666666664
+      "alive": 70,
+      "percent": 23.333333333333332
     }
   },
   "socks": {
-    "raw_count": 14543,
-    "final_count": 14543,
+    "raw_count": 14269,
+    "final_count": 14269,
     "health_sample": {
       "sampled": 300,
-      "alive": 75,
-      "percent": 25.0
+      "alive": 76,
+      "percent": 25.333333333333336
     }
   },
   "wireguard": {
@@ -72,11 +72,11 @@
     }
   },
   "summary": {
-    "total_configs": 289692,
+    "total_configs": 287929,
     "total_sources": 370,
-    "execution_time_sec": 672.763505557,
-    "timestamp": "2026-11-02 03:31:13 UTC",
-    "successful_sources": 271,
-    "failed_sources": 95
+    "execution_time_sec": 679.9873644730001,
+    "timestamp": "2026-11-02 14:21:05 UTC",
+    "successful_sources": 270,
+    "failed_sources": 96
   }
 }
