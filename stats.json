@@ -1,43 +1,43 @@
 {
   "vless": {
-    "raw_count": 80745,
-    "final_count": 80745,
+    "raw_count": 71056,
+    "final_count": 71056,
     "health_sample": {
       "sampled": 300,
-      "alive": 224,
-      "percent": 74.66666666666667
+      "alive": 223,
+      "percent": 74.33333333333333
     }
   },
   "reality": {
-    "raw_count": 48918,
-    "final_count": 48918,
+    "raw_count": 38448,
+    "final_count": 38448,
     "health_sample": {
       "sampled": 300,
-      "alive": 143,
-      "percent": 47.66666666666667
+      "alive": 151,
+      "percent": 50.33333333333333
     }
   },
   "vmess": {
-    "raw_count": 32784,
-    "final_count": 32784,
+    "raw_count": 29042,
+    "final_count": 29042,
     "health_sample": {
       "sampled": 300,
-      "alive": 61,
-      "percent": 20.333333333333332
+      "alive": 69,
+      "percent": 23.0
     }
   },
   "trojan": {
-    "raw_count": 25072,
-    "final_count": 25072,
+    "raw_count": 16274,
+    "final_count": 16274,
     "health_sample": {
       "sampled": 300,
-      "alive": 187,
-      "percent": 62.33333333333333
+      "alive": 219,
+      "percent": 73.0
     }
   },
   "hysteria2": {
-    "raw_count": 2544,
-    "final_count": 2544,
+    "raw_count": 2172,
+    "final_count": 2172,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -45,26 +45,26 @@
     }
   },
   "shadowsocks": {
-    "raw_count": 38109,
-    "final_count": 38109,
+    "raw_count": 36108,
+    "final_count": 36108,
     "health_sample": {
       "sampled": 300,
-      "alive": 89,
-      "percent": 29.666666666666668
+      "alive": 90,
+      "percent": 30.0
     }
   },
   "socks": {
-    "raw_count": 7044,
-    "final_count": 7044,
+    "raw_count": 15226,
+    "final_count": 15226,
     "health_sample": {
       "sampled": 300,
-      "alive": 92,
-      "percent": 30.666666666666664
+      "alive": 56,
+      "percent": 18.666666666666668
     }
   },
   "wireguard": {
-    "raw_count": 28,
-    "final_count": 28,
+    "raw_count": 23,
+    "final_count": 23,
     "health_sample": {
       "sampled": 0,
       "alive": 0,
@@ -72,11 +72,11 @@
     }
   },
   "summary": {
-    "total_configs": 235244,
+    "total_configs": 208349,
     "total_sources": 370,
-    "execution_time_sec": 716.811706907,
-    "timestamp": "2026-11-27 01:28:33 UTC",
-    "successful_sources": 225,
-    "failed_sources": 141
+    "execution_time_sec": 633.785405739,
+    "timestamp": "2026-11-27 15:59:09 UTC",
+    "successful_sources": 209,
+    "failed_sources": 157
   }
 }
